@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html><head><title>Dark BG Test</title>
+<style>
+  body { margin: 0; background: #231F20; min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 4rem; font-family: ui-sans-serif, system-ui; color: #fff; }
+  .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; max-width: 1200px; }
+  .card { background: #231F20; border: 1px solid #3F3F46; padding: 3rem; border-radius: 12px; display: flex; flex-direction: column; align-items: center; gap: 1rem; }
+  .card.gradient { background: linear-gradient(135deg, #4261AD 0%, #392F8E 50%, #482D89 100%); border: none; }
+  img { max-width: 100%; height: 60px; }
+  .lbl { font-family: ui-monospace, monospace; font-size: 12px; color: #A1A1AA; }
+</style></head>
+<body>
+<div class="grid">
+  <div class="card">
+    <img src="../logos/hierarchy-primary-reversed.svg" alt="Reversed">
+    <div class="lbl">hierarchy-primary-reversed.svg<br>on neutral-900 (#231F20)</div>
+  </div>
+  <div class="card gradient">
+    <img src="../logos/hierarchy-primary-reversed.svg" alt="Reversed">
+    <div class="lbl" style="color: rgba(255,255,255,0.9);">on brand gradient</div>
+  </div>
+</div>
+</body></html>

@@ -1,0 +1,5 @@
+2026-05-02T12:51:37.094Z | INFO | Starting MCP MySQL server from: /Users/eddy/.nvm/versions/node/v20.19.4/lib/node_modules/@liangshanli/mcp-server-mysql/src/server-final.js
+2026-05-02T12:51:37.095Z | INFO | Starting MCP MySQL server with environment: | {"MYSQL_HOST":"pulsetek.co.za","MYSQL_PORT":"3306","MYSQL_USER":"root","MYSQL_DATABASE":"aav360","READONLY":"true","ALLOW_DDL":"false","ALLOW_DROP":"false","ALLOW_DELETE":"false","TOOL_PREFIX":"online","PROJECT_NAME":"online-mysql","MCP_LOG_DIR":"./.setting.online","MCP_DDL_LOG_FILE":"ddl.sql"}
+2026-05-02T12:51:37.096Z | INFO | MCP MySQL server process started with PID: 57061
+2026-05-02T12:51:37.096Z | INFO | Signal handlers registered for SIGINT and SIGTERM
+2026-05-02T12:51:37.096Z | INFO | Press Ctrl+C to gracefully shutdown the server

@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Hierarchy Technologies — Brand Identity</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Sora:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../tokens/tokens.css">
+  <style>
+    @page {
+      size: A4;
+      margin: 18mm 16mm;
+    }
+    *, *::before, *::after { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; }
+    body {
+      font-family: var(--ht-font-family-body);
+      font-size: 10.5pt;
+      line-height: 1.55;
+      color: var(--ht-color-text-primary);
+      background: #fff;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+    h1, h2, h3, h4 { font-family: var(--ht-font-family-display); margin: 0; }
+    h1 { font-size: 36pt; font-weight: 700; letter-spacing: var(--ht-letter-spacing-tight); line-height: 1.05; }
+    h2 { font-size: 22pt; font-weight: 700; letter-spacing: var(--ht-letter-spacing-tight); margin: 0 0 8pt; }
+    h3 { font-size: 13pt; font-weight: 600; margin: 14pt 0 6pt; }
+    h4 { font-size: 9pt; font-weight: 700; letter-spacing: var(--ht-letter-spacing-wider); text-transform: uppercase; color: var(--ht-color-text-muted); margin: 0 0 6pt; }
+    p { margin: 0 0 8pt; color: var(--ht-color-text-secondary); }
+    code { font-family: var(--ht-font-family-mono); font-size: 0.92em; background: var(--ht-color-surface-raised); padding: 1pt 4pt; border-radius: 2pt; }
+    a { color: var(--ht-color-text-link); }
+
+    .page { page-break-after: always; padding-top: 6pt; }
+    .page:last-child { page-break-after: auto; }
+
+    /* ── Cover ─────────────────────────────────────────────────── */
+    .cover {
+      page-break-after: always;
+      height: 260mm;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      background: var(--ht-gradient-brand);
+      color: #fff;
+      margin: -18mm -16mm;
+      padding: 30mm 22mm;
+      position: relative;
+      overflow: hidden;
+    }
+    .cover::before {
+      content: '';
+      position: absolute; inset: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.07) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.07) 1px, transparent 1px);
+      background-size: 24mm 24mm;
+      pointer-events: none;
+    }
+    .cover-mark { position: relative; }
+    .cover-mark img { height: 60mm; }
+    .cover-title { position: relative; }
+    .cover-title h1 { font-size: 56pt; line-height: 1; color: #fff; }
+    .cover-title h1 small { display: block; font-size: 16pt; font-weight: 400; letter-spacing: var(--ht-letter-spacing-wider); text-transform: uppercase; opacity: 0.85; margin-bottom: 8pt; }
+    .cover-foot { position: relative; display: flex; justify-content: space-between; align-items: flex-end; font-size: 9pt; letter-spacing: var(--ht-letter-spacing-wider); text-transform: uppercase; opacity: 0.85; }
+
+    /* ── Sections ──────────────────────────────────────────────── */
+    .section-title { font-size: 10pt; font-weight: 600; letter-spacing: var(--ht-letter-spacing-wider); text-transform: uppercase; color: var(--ht-color-brand-azure-700); margin-bottom: 4pt; }
+
+    .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 8mm; }
+    .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 6mm; }
+    .grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 5mm; }
+    .grid-5 { display: grid; grid-template-columns: repeat(5, 1fr); gap: 4mm; }
+    .grid-10 { display: grid; grid-template-columns: repeat(10, 1fr); gap: 2mm; }
+    .grid-12 { display: grid; grid-template-columns: repeat(12, 1fr); gap: 2mm; }
+
+    .swatch { aspect-ratio: 1.2 / 1; border-radius: 3pt; padding: 4pt; display: flex; flex-direction: column; justify-content: flex-end; font-family: var(--ht-font-family-mono); font-size: 7pt; }
+    .swatch .lbl { font-weight: 700; }
+    .swatch .hex { opacity: 0.9; }
+    .ramp-name { display: block; font-family: var(--ht-font-family-display); font-weight: 600; font-size: 11pt; margin: 8pt 0 3pt; color: var(--ht-color-text-primary); }
+
+    /* ── TOC ───────────────────────────────────────────────────── */
+    .toc-list { list-style: none; padding: 0; margin: 12pt 0; }
+    .toc-list li { display: flex; justify-content: space-between; padding: 6pt 0; border-bottom: 0.5pt dashed var(--ht-color-neutral-300); font-size: 11pt; }
+    .toc-list .num { font-family: var(--ht-font-family-mono); color: var(--ht-color-text-muted); margin-right: 8pt; }
+
+    /* ── Logo display ──────────────────────────────────────────── */
+    .logo-tile { padding: 12pt; border-radius: 4pt; display: flex; align-items: center; justify-content: center; min-height: 36mm; }
+    .logo-tile img { max-width: 100%; max-height: 30mm; }
+    .logo-tile.light { background: var(--ht-color-neutral-50); border: 0.5pt solid var(--ht-color-neutral-200); }
+    .logo-tile.dark  { background: var(--ht-color-neutral-900); }
+    .logo-tile.gradient { background: var(--ht-gradient-brand); }
+    .caption { font-family: var(--ht-font-family-mono); font-size: 7pt; color: var(--ht-color-text-muted); margin-top: 3pt; text-align: center; }
+
+    /* ── Type ─────────────────────────────────────────────────── */
+    .type-row { display: flex; align-items: baseline; gap: 8mm; padding: 4pt 0; border-bottom: 0.3pt solid var(--ht-color-neutral-200); }
+    .type-row .tok { font-family: var(--ht-font-family-mono); font-size: 8pt; color: var(--ht-color-text-muted); width: 26mm; flex-shrink: 0; }
+    .type-row .ex { font-family: var(--ht-font-family-display); font-weight: 600; }
+
+    /* ── Components mini ──────────────────────────────────────── */
+    .demo-card { background: #fff; border: 0.5pt solid var(--ht-color-neutral-200); border-radius: 4pt; padding: 10pt; margin-bottom: 6pt; display: flex; flex-wrap: wrap; gap: 6pt; align-items: center; }
+    .btn { display: inline-flex; align-items: center; font-size: 9pt; font-weight: 500; padding: 6pt 12pt; border-radius: 4pt; border: 0.5pt solid transparent; }
+    .btn-primary { background: var(--ht-gradient-brand); color: #fff; }
+    .btn-secondary { background: var(--ht-color-brand-azure-700); color: #fff; }
+    .btn-ghost { background: #fff; color: var(--ht-color-text-primary); border-color: var(--ht-color-neutral-300); }
+    .btn-danger { background: var(--ht-color-danger-500); color: #fff; }
+    .badge { display: inline-flex; font-size: 8pt; font-weight: 500; padding: 1pt 6pt; border-radius: 999pt; border: 0.5pt solid transparent; }
+    .badge-info { background: var(--ht-color-info-50); color: var(--ht-color-info-700); border-color: var(--ht-color-brand-azure-200); }
+    .badge-success { background: var(--ht-color-success-50); color: var(--ht-color-success-700); }
+    .badge-warning { background: var(--ht-color-warning-50); color: var(--ht-color-warning-700); }
+    .badge-danger { background: var(--ht-color-danger-50); color: var(--ht-color-danger-700); }
+
+    .alert { padding: 8pt 10pt; border-radius: 4pt; border: 0.5pt solid; font-size: 9pt; margin-bottom: 4pt; }
+    .alert-info { background: var(--ht-color-info-50); border-color: var(--ht-color-brand-azure-200); }
+    .alert-success { background: var(--ht-color-success-50); border-color: #BBF7D0; }
+    .alert-danger { background: var(--ht-color-danger-50); border-color: #FECACA; }
+    .alert b { display: block; font-weight: 700; margin-bottom: 2pt; }
+
+    .table-mini { width: 100%; border-collapse: collapse; font-size: 9pt; }
+    .table-mini th { background: var(--ht-color-surface-subtle); text-align: left; padding: 5pt 6pt; font-size: 8pt; text-transform: uppercase; letter-spacing: var(--ht-letter-spacing-wide); color: var(--ht-color-text-muted); }
+    .table-mini td { padding: 5pt 6pt; border-top: 0.3pt solid var(--ht-color-neutral-200); }
+
+    /* ── Misc ─────────────────────────────────────────────────── */
+    ul.bullets { margin: 0 0 8pt 16pt; padding: 0; }
+    ul.bullets li { font-size: 10pt; color: var(--ht-color-text-secondary); margin-bottom: 3pt; }
+
+    table.kv { width: 100%; border-collapse: collapse; font-size: 9.5pt; margin-bottom: 8pt; }
+    table.kv th, table.kv td { padding: 5pt 6pt; text-align: left; border-bottom: 0.3pt solid var(--ht-color-neutral-200); vertical-align: top; }
+    table.kv th { background: var(--ht-color-surface-subtle); font-weight: 600; font-size: 8pt; letter-spacing: var(--ht-letter-spacing-wide); text-transform: uppercase; color: var(--ht-color-text-muted); }
+    .mono { font-family: var(--ht-font-family-mono); font-size: 9pt; }
+
+    .gradient-bar { height: 18mm; border-radius: 4pt; background: var(--ht-gradient-brand); display: flex; align-items: center; justify-content: center; color: #fff; font-family: var(--ht-font-family-display); font-weight: 700; letter-spacing: var(--ht-letter-spacing-wider); font-size: 11pt; }
+  </style>
+</head>
+<body>
+
+<!-- ────────────────── Cover ────────────────── -->
+<section class="cover">
+  <div class="cover-mark">
+    <img src="../logos/hierarchy-mark-mono-light.svg" alt="Hierarchy mark">
+  </div>
+  <div class="cover-title">
+    <h1><small>Brand Identity</small>Hierarchy<br>Technologies</h1>
+  </div>
+  <div class="cover-foot">
+    <span>Version 1.0 · 2026</span>
+    <span>Internal & Partner Use</span>
+  </div>
+</section>
+
+<!-- ────────────────── TOC ────────────────── -->
+<section class="page">
+  <div class="section-title">Contents</div>
+  <h2>What's in this book</h2>
+  <ol class="toc-list">
+    <li><span><span class="num">01</span>Brand foundations</span><span>03</span></li>
+    <li><span><span class="num">02</span>Logo system</span><span>04</span></li>
+    <li><span><span class="num">03</span>Color</span><span>06</span></li>
+    <li><span><span class="num">04</span>Typography</span><span>08</span></li>
+    <li><span><span class="num">05</span>Spacing, radius & elevation</span><span>09</span></li>
+    <li><span><span class="num">06</span>Voice & tone</span><span>10</span></li>
+    <li><span><span class="num">07</span>Components in use</span><span>11</span></li>
+    <li><span><span class="num">08</span>Design tokens</span><span>12</span></li>
+  </ol>
+
+  <h3 style="margin-top: 18pt;">How to read this</h3>
+  <p>This document is the abridged reference for the Hierarchy Technologies visual brand. The full living source — including raw token files (W3C DTCG JSON, CSS, SCSS, Tailwind preset, Dart, TypeScript) and all logo variants — lives in <code>branding/</code> in the working repository. When this PDF and that folder disagree, <strong>the folder wins</strong>.</p>
+</section>
+
+<!-- ────────────────── 01 Foundations ────────────────── -->
+<section class="page">
+  <div class="section-title">01 · Foundations</div>
+  <h2>Who we are, in three adjectives.</h2>
+  <p>Hierarchy Technologies builds technology products with structure, clarity, and engineering rigour. The brand expression sits at the intersection of <em>order</em> and <em>circuitry</em> — captured visually by the H mark, whose terminal nodes evoke a circuit board.</p>
+
+  <h3>Personality</h3>
+  <table class="kv">
+    <tr><th>Trait</th><th>We are…</th><th>We are not…</th></tr>
+    <tr><td>Structured</td><td>Ordered, deliberate, well-named</td><td>Rigid, bureaucratic</td></tr>
+    <tr><td>Engineered</td><td>Precise, evidence-driven, opinionated</td><td>Cold, jargon-heavy</td></tr>
+    <tr><td>Modern</td><td>Geometric, restrained, current</td><td>Trendy, ornamental</td></tr>
+    <tr><td>Confident</td><td>Direct, plainspoken, decisive</td><td>Brash, salesy</td></tr>
+    <tr><td>Human</td><td>Helpful, calm, respectful</td><td>Cute, ironic, cloying</td></tr>
+  </table>
+
+  <h3>Visual signature</h3>
+  <p>Three things should be immediately recognisable as HT, even when stripped of context:</p>
+  <ul class="bullets">
+    <li><strong>The H mark.</strong> Geometric H with circular node terminals.</li>
+    <li><strong>The brand gradient.</strong> Azure → indigo → violet, left-to-right.</li>
+    <li><strong>Wide-tracked display type.</strong> Wordmark uses generous letter-spacing.</li>
+  </ul>
+
+  <h3>Audience</h3>
+  <p>Engineers, technical leaders, and operators integrating Hierarchy products into mission-critical systems. They read fast and skim first; they prefer specifics over adjectives; they are skeptical of marketing fluff. Write and design accordingly.</p>
+</section>
+
+<!-- ────────────────── 02 Logo ────────────────── -->
+<section class="page">
+  <div class="section-title">02 · Logo system</div>
+  <h2>The lockup.</h2>
+
+  <div style="margin: 16pt 0 8pt; padding: 18pt; background: var(--ht-color-neutral-50); border-radius: 4pt; display: flex; align-items: center; justify-content: center;">
+    <img src="../logos/hierarchy-primary.svg" alt="Hierarchy Technologies primary lockup" style="width: 75%;">
+  </div>
+
+  <p>The Hierarchy logo is a three-element lockup: the <strong>H mark</strong>, a <strong>vertical separator</strong>, and the <strong>wordmark</strong>. At small sizes, the lockup pieces drop in this order: separator → wordmark → leaving the H mark alone.</p>
+
+  <h3>Variants</h3>
+  <div class="grid-3" style="margin-bottom: 8pt;">
+    <div><div class="logo-tile light"><img src="../logos/hierarchy-primary.svg" alt=""></div><div class="caption">primary · default</div></div>
+    <div><div class="logo-tile dark"><img src="../logos/hierarchy-primary-reversed.svg" alt=""></div><div class="caption">reversed · dark surfaces</div></div>
+    <div><div class="logo-tile light"><img src="../logos/hierarchy-primary-mono-dark.svg" alt=""></div><div class="caption">mono-dark · single-color</div></div>
+    <div><div class="logo-tile gradient"><img src="../logos/hierarchy-primary-mono-light.svg" alt=""></div><div class="caption">mono-light · knockout</div></div>
+    <div><div class="logo-tile light"><img src="../logos/hierarchy-mark.svg" alt="" style="max-height: 26mm;"></div><div class="caption">mark · app icon, avatar</div></div>
+    <div><div class="logo-tile light"><img src="../logos/hierarchy-wordmark.svg" alt=""></div><div class="caption">wordmark · paired with mark</div></div>
+  </div>
+
+  <h3>Clear space & minimum sizes</h3>
+  <table class="kv">
+    <tr><th>Variant</th><th>Min width</th><th>Notes</th></tr>
+    <tr><td>Primary lockup</td><td>120 px / 30 mm</td><td>Below this, switch to mark-only.</td></tr>
+    <tr><td>Mark only</td><td>24 px / 8 mm</td><td>Below this, drop to favicon.</td></tr>
+    <tr><td>Favicon</td><td>16 px</td><td>Designed for this size.</td></tr>
+  </table>
+  <p>Maintain clear space ≥ <strong>1× the height of the H counter</strong> on all sides. Nothing may enter that zone.</p>
+</section>
+
+<section class="page">
+  <div class="section-title">02 · Logo system</div>
+  <h2>Misuse.</h2>
+  <p>The logo is fixed art. Don't redraw, recolor, distort, or compose against it. Specific prohibitions:</p>
+  <ul class="bullets">
+    <li>Don't recolor the wordmark or change its weight.</li>
+    <li>Don't apply effects (drop-shadow, glow, bevel, outline-stroke).</li>
+    <li>Don't rotate, skew, or stretch.</li>
+    <li>Don't separate the gradient mark from the wordmark unless using the dedicated <code>hierarchy-mark.svg</code> variant.</li>
+    <li>Don't place the gradient on backgrounds in the <code>azure-200..violet-200</code> range — contrast collapses.</li>
+    <li>Don't crop the H mark; it relies on the four nodes being visible.</li>
+    <li>Don't outline or fill the inner counter of the H.</li>
+    <li>Don't use the wordmark without the mark on hero surfaces (use the lockup).</li>
+  </ul>
+
+  <h3>File-format picker</h3>
+  <table class="kv">
+    <tr><th>Need</th><th>Use</th></tr>
+    <tr><td>Web, app UI, docs</td><td><code>logos/*.svg</code></td></tr>
+    <tr><td>Editable vector</td><td><code>HT LOGO.ai</code></td></tr>
+    <tr><td>High-res print</td><td><code>HT LOGO.pdf</code></td></tr>
+    <tr><td>Raster (legacy / email)</td><td><code>1x/Artboard 1.png</code></td></tr>
+    <tr><td>Browser favicon</td><td><code>logos/favicon.svg</code></td></tr>
+  </table>
+</section>
+
+<!-- ────────────────── 03 Color ────────────────── -->
+<section class="page">
+  <div class="section-title">03 · Color</div>
+  <h2>One palette, three brand hues, one ink.</h2>
+  <p>Source values come directly from the logo gradient — every other value is a perceptually-derived ramp.</p>
+
+  <div class="gradient-bar">HIERARCHY · TECHNOLOGIES</div>
+  <p style="margin-top: 4pt;" class="caption">Brand gradient · <code>linear-gradient(90deg, #4261AD 0%, #392F8E 50%, #482D89 100%)</code></p>
+
+  <span class="ramp-name">Brand · Azure</span>
+  <div class="grid-10" id="azure"></div>
+
+  <span class="ramp-name">Brand · Indigo</span>
+  <div class="grid-10" id="indigo"></div>
+
+  <span class="ramp-name">Brand · Violet</span>
+  <div class="grid-10" id="violet"></div>
+</section>
+
+<section class="page">
+  <div class="section-title">03 · Color</div>
+  <h2>Neutral & semantic.</h2>
+
+  <span class="ramp-name">Neutral</span>
+  <div class="grid-12" id="neutral"></div>
+
+  <span class="ramp-name">Semantic</span>
+  <div class="grid-4" id="semantic"></div>
+
+  <h3>Verified contrast pairings (WCAG 2.2)</h3>
+  <table class="kv">
+    <tr><th>Foreground</th><th>Background</th><th>Ratio</th><th>Verdict</th></tr>
+    <tr><td>text.primary <span class="mono">#231F20</span></td><td>surface.background <span class="mono">#FFFFFF</span></td><td>16.4:1</td><td>AAA</td></tr>
+    <tr><td>text.secondary <span class="mono">#3F3F46</span></td><td>surface.background <span class="mono">#FFFFFF</span></td><td>10.4:1</td><td>AAA</td></tr>
+    <tr><td>text.muted <span class="mono">#71717A</span></td><td>surface.background <span class="mono">#FFFFFF</span></td><td>4.6:1</td><td>AA</td></tr>
+    <tr><td>text.link <span class="mono">#2A4280</span></td><td>surface.background <span class="mono">#FFFFFF</span></td><td>8.6:1</td><td>AAA</td></tr>
+    <tr><td>brand.azure.500 <span class="mono">#4261AD</span></td><td>surface.background <span class="mono">#FFFFFF</span></td><td>5.6:1</td><td>AA</td></tr>
+    <tr><td>text.inverse <span class="mono">#FFFFFF</span></td><td>surface.inverse <span class="mono">#231F20</span></td><td>16.4:1</td><td>AAA</td></tr>
+  </table>
+</section>
+
+<!-- ────────────────── 04 Typography ────────────────── -->
+<section class="page">
+  <div class="section-title">04 · Typography</div>
+  <h2>Sora for display. Inter for everything else.</h2>
+
+  <table class="kv">
+    <tr><th>Role</th><th>Family</th><th>Why</th></tr>
+    <tr><td>Display</td><td>Sora 700/600</td><td>Geometric sans pairing with the wordmark.</td></tr>
+    <tr><td>Body / UI</td><td>Inter 400/500/600/700</td><td>Industry-standard humanist sans, exceptional legibility.</td></tr>
+    <tr><td>Monospace</td><td>JetBrains Mono</td><td>Code, terminal output, IDs.</td></tr>
+  </table>
+
+  <h3>Type scale (1.250 — major third)</h3>
+  <div>
+    <div class="type-row"><span class="tok">6xl · 700</span><span class="ex" style="font-size: 36pt;">Hierarchy</span></div>
+    <div class="type-row"><span class="tok">5xl · 700</span><span class="ex" style="font-size: 28pt;">Hierarchy</span></div>
+    <div class="type-row"><span class="tok">4xl · 600</span><span class="ex" style="font-size: 22pt;">Hierarchy</span></div>
+    <div class="type-row"><span class="tok">3xl · 600</span><span class="ex" style="font-size: 17pt;">Hierarchy</span></div>
+    <div class="type-row"><span class="tok">2xl · 600</span><span class="ex" style="font-size: 14pt;">Hierarchy</span></div>
+    <div class="type-row"><span class="tok">xl · 500</span><span class="ex" style="font-size: 12pt; font-weight: 500;">Hierarchy Technologies</span></div>
+    <div class="type-row"><span class="tok">base · 400</span><span class="ex" style="font-size: 10pt; font-weight: 400; font-family: var(--ht-font-family-body);">The quick brown fox jumps over the lazy dog. 0123456789</span></div>
+    <div class="type-row"><span class="tok">sm · 400</span><span class="ex" style="font-size: 9pt; font-weight: 400; font-family: var(--ht-font-family-body);">Helper text and table cells use this size.</span></div>
+    <div class="type-row"><span class="tok">mono</span><span class="ex" style="font-family: var(--ht-font-family-mono); font-size: 9pt; font-weight: 400;">const tokens = require('./tokens.json');</span></div>
+  </div>
+</section>
+
+<!-- ────────────────── 05 Spacing ────────────────── -->
+<section class="page">
+  <div class="section-title">05 · Spacing, radius & elevation</div>
+  <h2>4-pt base. No exceptions.</h2>
+
+  <h3>Spacing scale</h3>
+  <table class="kv">
+    <tr><th>Token</th><th>rem</th><th>px</th><th>Use</th></tr>
+    <tr><td>space.1</td><td>0.25rem</td><td>4</td><td>Hairline, icon padding</td></tr>
+    <tr><td>space.2</td><td>0.5rem</td><td>8</td><td>Inline gap</td></tr>
+    <tr><td>space.4</td><td>1rem</td><td>16</td><td>Default UI unit</td></tr>
+    <tr><td>space.6</td><td>1.5rem</td><td>24</td><td>Section rhythm</td></tr>
+    <tr><td>space.8</td><td>2rem</td><td>32</td><td>Card padding (large)</td></tr>
+    <tr><td>space.12</td><td>3rem</td><td>48</td><td>Page margins (tablet)</td></tr>
+    <tr><td>space.16</td><td>4rem</td><td>64</td><td>Hero block</td></tr>
+    <tr><td>space.24</td><td>6rem</td><td>96</td><td>Marketing hero</td></tr>
+  </table>
+
+  <h3>Radius</h3>
+  <table class="kv">
+    <tr><th>Token</th><th>Value</th><th>Use</th></tr>
+    <tr><td>radius.sm</td><td>4px</td><td>Tags, chips, small inputs</td></tr>
+    <tr><td>radius.md</td><td>8px</td><td><strong>Default</strong> — buttons, inputs, cards</td></tr>
+    <tr><td>radius.lg</td><td>12px</td><td>Modals, large cards</td></tr>
+    <tr><td>radius.xl</td><td>16px</td><td>Hero panels</td></tr>
+    <tr><td>radius.pill</td><td>9999px</td><td>Pills, badges, avatar wrapper</td></tr>
+  </table>
+
+  <h3>Elevation</h3>
+  <p>Five-step shadow scale, all using brand ink at ≤ 15% opacity for warmth. Light source top-down. Don't use coloured shadows.</p>
+</section>
+
+<!-- ────────────────── 06 Voice ────────────────── -->
+<section class="page">
+  <div class="section-title">06 · Voice & tone</div>
+  <h2>Direct. Technical. Calm. Respectful.</h2>
+
+  <p>Voice stays constant; tone shifts with context.</p>
+
+  <table class="kv">
+    <tr><th>Context</th><th>Tone</th><th>Example</th></tr>
+    <tr><td>Confirmation</td><td>Matter-of-fact</td><td>"Saved."</td></tr>
+    <tr><td>Recoverable error</td><td>Specific, action-oriented</td><td>"File exceeds 10 MB. Compress or split, then retry."</td></tr>
+    <tr><td>Fatal error</td><td>Direct, accountable</td><td>"Upload failed: server returned 503. Retry, or contact support with request ID req_8aJk3."</td></tr>
+    <tr><td>Empty state</td><td>Useful, not cute</td><td>"No agents yet. Create your first one to start delegating."</td></tr>
+    <tr><td>Marketing hero</td><td>Confident, evidence-based</td><td>"Ship faster. Your tail-end backlog, finally addressable."</td></tr>
+  </table>
+
+  <h3>Banned phrases</h3>
+  <table class="kv">
+    <tr><th>Don't say</th><th>Say instead</th></tr>
+    <tr><td>"Oops!" / "Whoops!"</td><td>(describe what happened)</td></tr>
+    <tr><td>"Magic" / "magical"</td><td>(the actual mechanism)</td></tr>
+    <tr><td>"Simply" / "Just" (filler)</td><td>(delete the word)</td></tr>
+    <tr><td>"Please wait"</td><td>"Loading…" or progress indicator</td></tr>
+    <tr><td>"Invalid" (alone)</td><td>(be specific about what and how to fix)</td></tr>
+  </table>
+</section>
+
+<!-- ────────────────── 07 Components ────────────────── -->
+<section class="page">
+  <div class="section-title">07 · Components in use</div>
+  <h2>What it looks like in product.</h2>
+
+  <h3>Buttons</h3>
+  <div class="demo-card">
+    <span class="btn btn-primary">Start free trial</span>
+    <span class="btn btn-secondary">Sign in</span>
+    <span class="btn btn-ghost">Cancel</span>
+    <span class="btn btn-danger">Delete agent</span>
+  </div>
+
+  <h3>Badges & status</h3>
+  <div class="demo-card">
+    <span class="badge badge-info">In review</span>
+    <span class="badge badge-success">Live</span>
+    <span class="badge badge-warning">Expiring soon</span>
+    <span class="badge badge-danger">Failed</span>
+  </div>
+
+  <h3>Alerts</h3>
+  <div class="alert alert-info"><b>Scheduled maintenance</b>Read replicas in <code>us-east-1</code> will failover at 02:00 UTC. No action required.</div>
+  <div class="alert alert-success"><b>Workspace created</b>Your workspace <strong>acme-prod</strong> is ready.</div>
+  <div class="alert alert-danger"><b>Upload failed</b>File exceeds 10 MB. Compress or split, then retry. Request ID <code>req_8aJk3</code>.</div>
+
+  <h3>Table</h3>
+  <table class="table-mini">
+    <thead><tr><th>Agent</th><th>Hierarchy</th><th>Tasks (24h)</th><th>Median</th><th>Status</th></tr></thead>
+    <tbody>
+      <tr><td>backlog-triage</td><td>support/tier-3</td><td>2,442</td><td>1.2 s</td><td><span class="badge badge-success">Live</span></td></tr>
+      <tr><td>fraud-review</td><td>billing/anomaly</td><td>418</td><td>4.1 s</td><td><span class="badge badge-warning">Expiring</span></td></tr>
+      <tr><td>onboarding-bot</td><td>customer/new</td><td>1,201</td><td>820 ms</td><td><span class="badge badge-success">Live</span></td></tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- ────────────────── 08 Tokens ────────────────── -->
+<section class="page">
+  <div class="section-title">08 · Design tokens</div>
+  <h2>One source. Five outputs.</h2>
+
+  <p>Authored once in W3C DTCG JSON; consumed by every stack via the matching derivative.</p>
+
+  <table class="kv">
+    <tr><th>File</th><th>Format</th><th>Consumer</th></tr>
+    <tr><td><code>tokens/tokens.json</code></td><td>W3C DTCG</td><td><strong>Source of truth</strong></td></tr>
+    <tr><td><code>tokens/tokens.css</code></td><td>CSS custom properties</td><td>Web — Angular global styles</td></tr>
+    <tr><td><code>tokens/tokens.scss</code></td><td>SCSS variables + maps</td><td>Web — SCSS partials</td></tr>
+    <tr><td><code>tokens/tokens.tailwind.cjs</code></td><td>Tailwind preset</td><td>Any Tailwind consumer</td></tr>
+    <tr><td><code>tokens/tokens.dart</code></td><td>Dart constants</td><td>Mobile — Flutter <code>ThemeData</code></td></tr>
+    <tr><td><code>tokens/tokens.ts</code></td><td>TypeScript constants</td><td>Web — typed access</td></tr>
+  </table>
+
+  <h3>Token categories</h3>
+  <ul class="bullets">
+    <li><strong>color.brand</strong> — azure / indigo / violet, 50–900 ramps</li>
+    <li><strong>color.neutral</strong> — 0–1000 (ink at 900)</li>
+    <li><strong>color.semantic</strong> — success, warning, danger, info</li>
+    <li><strong>color.surface / text</strong> — themed light/dark aliases</li>
+    <li><strong>color.gradient.brand</strong> — canonical 3-stop gradient</li>
+    <li><strong>font</strong> — family, weight, size, lineHeight, letterSpacing</li>
+    <li><strong>space</strong> — 4-pt scale 0…24</li>
+    <li><strong>radius / shadow / breakpoint / motion</strong></li>
+  </ul>
+
+  <h3>Updating</h3>
+  <p>Edit <code>tokens/tokens.json</code> first, then mirror the change to derivatives. Run <code>preview.html</code> to verify visually. The full <code>branding/</code> folder is the master.</p>
+
+  <p style="margin-top: 22pt; font-size: 8pt; color: var(--ht-color-text-muted); text-align: center;">© 2026 Hierarchy Technologies · Brand Identity v1.0 · Internal & Partner Use</p>
+</section>
+
+<script>
+  function readVar(n) { return getComputedStyle(document.documentElement).getPropertyValue(n).trim(); }
+  function el(t, c, x) { const n = document.createElement(t); if (c) n.className = c; if (x != null) n.textContent = x; return n; }
+  function ramp(id, fam, steps) {
+    const host = document.getElementById(id);
+    if (!host) return;
+    steps.forEach(s => {
+      const tok = `--ht-color-${fam}-${s}`;
+      const div = el('div', 'swatch');
+      div.style.background = `var(${tok})`;
+      const isLight = parseInt(s) <= 300 || s === 0 || s === 50;
+      div.style.color = isLight ? 'var(--ht-color-neutral-900)' : '#fff';
+      div.appendChild(el('div', 'lbl', String(s)));
+      div.appendChild(el('div', 'hex', readVar(tok)));
+      host.appendChild(div);
+    });
+  }
+  const std = [50,100,200,300,400,500,600,700,800,900];
+  ramp('azure',  'brand-azure',  std);
+  ramp('indigo', 'brand-indigo', std);
+  ramp('violet', 'brand-violet', std);
+  ramp('neutral','neutral', [0,50,100,200,300,400,500,600,700,800,900,1000]);
+
+  const sem = document.getElementById('semantic');
+  if (sem) {
+    [
+      {l:'success-500', t:'--ht-color-success-500'},
+      {l:'warning-500', t:'--ht-color-warning-500'},
+      {l:'danger-500',  t:'--ht-color-danger-500'},
+      {l:'info-500',    t:'--ht-color-info-500'}
+    ].forEach(s => {
+      const d = el('div', 'swatch');
+      d.style.background = `var(${s.t})`;
+      d.style.color = '#fff';
+      d.style.aspectRatio = '2.5 / 1';
+      d.appendChild(el('div', 'lbl', s.l));
+      d.appendChild(el('div', 'hex', readVar(s.t)));
+      sem.appendChild(d);
+    });
+  }
+</script>
+</body>
+</html>

@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hierarchy Technologies — Engineered Systems for Operators</title>
+  <link rel="icon" type="image/svg+xml" href="../logos/favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Sora:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../tokens/tokens.css">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: var(--ht-font-family-body);
+      font-size: var(--ht-font-size-base);
+      line-height: var(--ht-line-height-normal);
+      color: var(--ht-color-text-primary);
+      background: var(--ht-color-surface-background);
+      -webkit-font-smoothing: antialiased;
+    }
+    h1, h2, h3, h4 { font-family: var(--ht-font-family-display); margin: 0; }
+    h1 { font-size: clamp(2.4rem, 5.5vw, 3.815rem); font-weight: 700; letter-spacing: var(--ht-letter-spacing-tight); line-height: var(--ht-line-height-tight); }
+    h2 { font-size: clamp(1.95rem, 3.5vw, 3.052rem); font-weight: 700; letter-spacing: var(--ht-letter-spacing-tight); line-height: var(--ht-line-height-tight); }
+    h3 { font-size: var(--ht-font-size-xl); font-weight: 600; }
+    h4 { font-size: var(--ht-font-size-base); font-weight: 600; font-family: var(--ht-font-family-body); }
+    p  { margin: 0; color: var(--ht-color-text-secondary); }
+    a  { color: var(--ht-color-text-link); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .container { max-width: 1280px; margin: 0 auto; padding-left: var(--ht-space-6); padding-right: var(--ht-space-6); }
+
+    /* ─── Header ───────────────────────────────────────────────── */
+    .nav {
+      position: sticky; top: 0; z-index: 10;
+      background: rgba(255,255,255,0.85);
+      backdrop-filter: saturate(180%) blur(12px);
+      border-bottom: 1px solid var(--ht-color-neutral-200);
+    }
+    .nav-inner { display: flex; align-items: center; justify-content: space-between; padding: var(--ht-space-3) var(--ht-space-6); max-width: 1280px; margin: 0 auto; }
+    .nav img { height: 28px; }
+    .nav-links { display: flex; gap: var(--ht-space-6); align-items: center; }
+    .nav-links a { color: var(--ht-color-text-secondary); font-size: var(--ht-font-size-sm); font-weight: 500; }
+    .nav-links a:hover { color: var(--ht-color-text-primary); text-decoration: none; }
+
+    .btn {
+      display: inline-flex; align-items: center; gap: var(--ht-space-2);
+      font-family: var(--ht-font-family-body);
+      font-size: var(--ht-font-size-sm);
+      font-weight: 500;
+      letter-spacing: var(--ht-letter-spacing-wide);
+      padding: var(--ht-space-3) var(--ht-space-5);
+      border-radius: var(--ht-radius-md);
+      border: 1px solid transparent;
+      cursor: pointer;
+      transition: all var(--ht-duration-fast) var(--ht-easing-standard);
+      text-decoration: none;
+    }
+    .btn-primary { background: var(--ht-gradient-brand); color: #fff; box-shadow: var(--ht-shadow-sm); }
+    .btn-primary:hover { box-shadow: var(--ht-shadow-md); transform: translateY(-1px); }
+    .btn-ghost { background: transparent; color: var(--ht-color-text-primary); border-color: var(--ht-color-neutral-300); }
+    .btn-ghost:hover { background: var(--ht-color-surface-subtle); border-color: var(--ht-color-neutral-400); text-decoration: none; }
+    .btn-lg { padding: var(--ht-space-4) var(--ht-space-6); font-size: var(--ht-font-size-base); }
+
+    /* ─── Hero ─────────────────────────────────────────────────── */
+    .hero {
+      position: relative;
+      padding: var(--ht-space-24) 0 var(--ht-space-16);
+      overflow: hidden;
+      background:
+        radial-gradient(800px 400px at 80% 0%, rgba(72,45,137,0.18), transparent 70%),
+        radial-gradient(700px 300px at 0% 30%, rgba(66,97,173,0.15), transparent 70%),
+        var(--ht-color-surface-background);
+    }
+    .hero::before {
+      content: ''; position: absolute; inset: 0;
+      background-image:
+        linear-gradient(rgba(35,31,32,0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(35,31,32,0.04) 1px, transparent 1px);
+      background-size: 48px 48px;
+      mask-image: radial-gradient(ellipse 70% 60% at 50% 30%, black, transparent 90%);
+      pointer-events: none;
+    }
+    .hero-grid { position: relative; display: grid; grid-template-columns: 1.1fr 1fr; gap: var(--ht-space-16); align-items: center; }
+    .eyebrow { display: inline-flex; align-items: center; gap: var(--ht-space-2); font-family: var(--ht-font-family-body); font-size: var(--ht-font-size-xs); font-weight: 600; letter-spacing: var(--ht-letter-spacing-wider); text-transform: uppercase; color: var(--ht-color-brand-azure-700); background: var(--ht-color-brand-azure-50); padding: var(--ht-space-1) var(--ht-space-3); border-radius: var(--ht-radius-pill); margin-bottom: var(--ht-space-6); }
+    .eyebrow .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--ht-color-brand-violet-500); }
+    .hero h1 .gradient { background: var(--ht-gradient-brand); -webkit-background-clip: text; background-clip: text; color: transparent; }
+    .hero p.lede { margin-top: var(--ht-space-6); font-size: var(--ht-font-size-lg); color: var(--ht-color-text-secondary); max-width: 56ch; }
+    .hero-cta { margin-top: var(--ht-space-8); display: flex; gap: var(--ht-space-3); }
+    .hero-meta { margin-top: var(--ht-space-10); display: flex; gap: var(--ht-space-8); }
+    .hero-meta div { font-size: var(--ht-font-size-sm); color: var(--ht-color-text-muted); }
+    .hero-meta strong { display: block; color: var(--ht-color-text-primary); font-family: var(--ht-font-family-display); font-size: var(--ht-font-size-2xl); font-weight: 700; }
+
+    .hero-card {
+      background: #fff;
+      border: 1px solid var(--ht-color-neutral-200);
+      border-radius: var(--ht-radius-xl);
+      box-shadow: var(--ht-shadow-xl);
+      padding: var(--ht-space-6);
+      position: relative;
+    }
+    .hero-card::before { content: ''; position: absolute; inset: -1px; border-radius: inherit; padding: 1px; background: var(--ht-gradient-brand); -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0); -webkit-mask-composite: xor; mask-composite: exclude; pointer-events: none; opacity: 0.6; }
+    .term-bar { display: flex; gap: var(--ht-space-2); margin-bottom: var(--ht-space-4); }
+    .term-dot { width: 12px; height: 12px; border-radius: 50%; background: var(--ht-color-neutral-300); }
+    .term-dot.r { background: #ED6A5E; } .term-dot.y { background: #F4BF4F; } .term-dot.g { background: #62C554; }
+    .term-body { font-family: var(--ht-font-family-mono); font-size: 0.85rem; line-height: 1.7; color: var(--ht-color-text-primary); }
+    .term-body .c1 { color: var(--ht-color-brand-azure-700); }
+    .term-body .c2 { color: var(--ht-color-brand-violet-500); }
+    .term-body .c3 { color: var(--ht-color-success-700); }
+    .term-body .c4 { color: var(--ht-color-text-muted); }
+
+    /* ─── Logos / trust ─────────────────────────────────────────── */
+    .trust { padding: var(--ht-space-12) 0; border-top: 1px solid var(--ht-color-neutral-200); border-bottom: 1px solid var(--ht-color-neutral-200); background: var(--ht-color-surface-subtle); }
+    .trust p { text-align: center; font-size: var(--ht-font-size-xs); font-weight: 600; letter-spacing: var(--ht-letter-spacing-wider); text-transform: uppercase; color: var(--ht-color-text-muted); margin-bottom: var(--ht-space-6); }
+    .trust-row { display: grid; grid-template-columns: repeat(5, 1fr); gap: var(--ht-space-8); align-items: center; opacity: 0.7; }
+    .trust-row span { text-align: center; font-family: var(--ht-font-family-display); font-weight: 700; color: var(--ht-color-text-secondary); letter-spacing: var(--ht-letter-spacing-wide); }
+
+    /* ─── Features ─────────────────────────────────────────────── */
+    .section { padding: var(--ht-space-24) 0; }
+    .section-head { text-align: center; max-width: 720px; margin: 0 auto var(--ht-space-16); }
+    .section-head .eyebrow { margin-bottom: var(--ht-space-4); }
+    .section-head p { margin-top: var(--ht-space-4); font-size: var(--ht-font-size-lg); }
+    .features { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--ht-space-6); }
+    .feature { background: #fff; border: 1px solid var(--ht-color-neutral-200); border-radius: var(--ht-radius-lg); padding: var(--ht-space-8); transition: all var(--ht-duration-base) var(--ht-easing-standard); }
+    .feature:hover { box-shadow: var(--ht-shadow-md); border-color: var(--ht-color-brand-azure-200); transform: translateY(-2px); }
+    .feature-icon { width: 44px; height: 44px; border-radius: var(--ht-radius-md); background: var(--ht-color-brand-azure-50); display: flex; align-items: center; justify-content: center; color: var(--ht-color-brand-azure-700); margin-bottom: var(--ht-space-5); }
+    .feature h3 { margin-bottom: var(--ht-space-3); }
+    .feature p { font-size: var(--ht-font-size-sm); }
+
+    /* ─── Showcase strip ────────────────────────────────────────── */
+    .showcase { background: var(--ht-color-surface-inverse); color: var(--ht-color-text-inverse); padding: var(--ht-space-24) 0; position: relative; overflow: hidden; }
+    .showcase::before { content: ''; position: absolute; top: -200px; left: -200px; width: 600px; height: 600px; background: var(--ht-gradient-brand); filter: blur(120px); opacity: 0.35; border-radius: 50%; pointer-events: none; }
+    .showcase h2 { color: #fff; }
+    .showcase p { color: var(--ht-color-neutral-300); }
+    .showcase-grid { position: relative; display: grid; grid-template-columns: 1fr 1fr; gap: var(--ht-space-16); align-items: center; }
+    .stat-grid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--ht-space-6); margin-top: var(--ht-space-8); }
+    .stat { padding: var(--ht-space-6); border: 1px solid var(--ht-color-neutral-700); border-radius: var(--ht-radius-md); background: rgba(255,255,255,0.03); }
+    .stat .num { font-family: var(--ht-font-family-display); font-size: var(--ht-font-size-4xl); font-weight: 700; background: var(--ht-gradient-brand); -webkit-background-clip: text; background-clip: text; color: transparent; }
+    .stat .lbl { font-size: var(--ht-font-size-sm); color: var(--ht-color-neutral-300); margin-top: var(--ht-space-1); }
+
+    /* ─── Pricing ──────────────────────────────────────────────── */
+    .pricing { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--ht-space-6); }
+    .price-card { background: #fff; border: 1px solid var(--ht-color-neutral-200); border-radius: var(--ht-radius-lg); padding: var(--ht-space-8); display: flex; flex-direction: column; gap: var(--ht-space-5); }
+    .price-card.featured { border-color: var(--ht-color-brand-azure-500); box-shadow: var(--ht-shadow-lg); position: relative; }
+    .price-card.featured::after { content: 'Most popular'; position: absolute; top: -12px; left: 50%; transform: translateX(-50%); background: var(--ht-gradient-brand); color: #fff; font-size: var(--ht-font-size-xs); font-weight: 600; letter-spacing: var(--ht-letter-spacing-wider); text-transform: uppercase; padding: var(--ht-space-1) var(--ht-space-3); border-radius: var(--ht-radius-pill); }
+    .price-card .price { font-family: var(--ht-font-family-display); font-size: var(--ht-font-size-5xl); font-weight: 700; line-height: 1; }
+    .price-card .price small { font-size: var(--ht-font-size-base); font-weight: 400; color: var(--ht-color-text-muted); }
+    .price-card ul { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: var(--ht-space-3); }
+    .price-card li { font-size: var(--ht-font-size-sm); color: var(--ht-color-text-secondary); display: flex; gap: var(--ht-space-2); align-items: flex-start; }
+    .price-card li::before { content: ''; flex-shrink: 0; width: 18px; height: 18px; border-radius: 50%; background: var(--ht-color-success-50); border: 1px solid var(--ht-color-success-500); margin-top: 2px; background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2316A34A' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'><polyline points='20 6 9 17 4 12'/></svg>"); background-position: center; background-repeat: no-repeat; background-size: 12px; }
+
+    /* ─── CTA ──────────────────────────────────────────────────── */
+    .cta { background: var(--ht-gradient-brand); padding: var(--ht-space-24) 0; color: #fff; text-align: center; position: relative; overflow: hidden; }
+    .cta h2 { color: #fff; }
+    .cta p { color: rgba(255,255,255,0.85); margin-top: var(--ht-space-4); font-size: var(--ht-font-size-lg); }
+    .cta .btn { background: #fff; color: var(--ht-color-brand-indigo-700); margin-top: var(--ht-space-8); }
+
+    /* ─── Footer ───────────────────────────────────────────────── */
+    footer { background: var(--ht-color-neutral-50); border-top: 1px solid var(--ht-color-neutral-200); padding: var(--ht-space-12) 0; }
+    .foot-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: var(--ht-space-8); }
+    footer img { height: 28px; margin-bottom: var(--ht-space-4); }
+    footer h4 { font-size: var(--ht-font-size-xs); letter-spacing: var(--ht-letter-spacing-wider); text-transform: uppercase; color: var(--ht-color-text-muted); margin-bottom: var(--ht-space-3); }
+    footer ul { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: var(--ht-space-2); }
+    footer li a { color: var(--ht-color-text-secondary); font-size: var(--ht-font-size-sm); }
+    .foot-bottom { margin-top: var(--ht-space-8); padding-top: var(--ht-space-6); border-top: 1px solid var(--ht-color-neutral-200); display: flex; justify-content: space-between; font-size: var(--ht-font-size-sm); color: var(--ht-color-text-muted); }
+
+    @media (max-width: 768px) {
+      .hero-grid, .showcase-grid, .features, .pricing, .foot-grid { grid-template-columns: 1fr; gap: var(--ht-space-8); }
+      .trust-row { grid-template-columns: repeat(2, 1fr); }
+      .nav-links a:not(.btn) { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="nav-inner">
+    <img src="../logos/hierarchy-primary.svg" alt="Hierarchy Technologies">
+    <div class="nav-links">
+      <a href="#features">Platform</a>
+      <a href="#showcase">Customers</a>
+      <a href="#pricing">Pricing</a>
+      <a href="components.html">Components</a>
+      <a class="btn btn-ghost" href="#">Sign in</a>
+      <a class="btn btn-primary" href="#cta">Start free →</a>
+    </div>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="container hero-grid">
+    <div>
+      <span class="eyebrow"><span class="dot"></span> Now in general availability</span>
+      <h1>Engineered systems for the <span class="gradient">long tail</span> of operations.</h1>
+      <p class="lede">Hierarchy gives operators the structure to delegate, observe, and reason about every task that no human will get to today. Built for teams who have stopped pretending they can do it all.</p>
+      <div class="hero-cta">
+        <a class="btn btn-primary btn-lg" href="#cta">Start free trial</a>
+        <a class="btn btn-ghost btn-lg" href="#features">See how it works</a>
+      </div>
+      <div class="hero-meta">
+        <div><strong>120ms</strong>median request latency</div>
+        <div><strong>99.99%</strong>operational uptime, 12 mo</div>
+        <div><strong>SOC&nbsp;2</strong>Type II certified</div>
+      </div>
+    </div>
+    <div class="hero-card">
+      <div class="term-bar"><span class="term-dot r"></span><span class="term-dot y"></span><span class="term-dot g"></span></div>
+      <pre class="term-body" style="margin:0;"><span class="c4"># Provision an agent in 4 lines</span>
+<span class="c1">$</span> ht agent create<span class="c4"> --kind backlog-triage</span>
+<span class="c3">✓</span> Created <span class="c2">agent_8aJk</span> in workspace <span class="c2">acme-prod</span>
+<span class="c3">✓</span> Bound to queue <span class="c2">support-tier-3</span>
+<span class="c3">✓</span> Listening · 2 tasks pending · 0 errors
+
+<span class="c1">$</span> ht tail<span class="c4"> agent_8aJk</span>
+<span class="c4">[2026-04-28T14:02Z]</span> claimed task <span class="c2">tk_91ab</span>
+<span class="c4">[2026-04-28T14:02Z]</span> resolved in 1.4s
+<span class="c4">[2026-04-28T14:02Z]</span> escalated <span class="c2">tk_91ac</span> → human</pre>
+    </div>
+  </div>
+</section>
+
+<section class="trust">
+  <div class="container">
+    <p>Trusted by engineering teams at</p>
+    <div class="trust-row">
+      <span>NORTHWIND</span>
+      <span>STRATA</span>
+      <span>QUARRY&nbsp;CO.</span>
+      <span>OUTPOST</span>
+      <span>FIELDLINE</span>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="features">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow"><span class="dot"></span> Platform</span>
+      <h2>Three primitives. Everything else composes from them.</h2>
+      <p>Tasks describe work. Agents execute it. Hierarchies organise both. The rest of the system is plumbing — and we keep it out of your way.</p>
+    </div>
+    <div class="features">
+
+      <div class="feature">
+        <div class="feature-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
+        </div>
+        <h3>Hierarchies, not flat queues.</h3>
+        <p>Work belongs in trees. Hierarchy lets you nest scopes, inherit policy, and route by level — no more flat queues with surprise priorities.</p>
+      </div>
+
+      <div class="feature">
+        <div class="feature-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v4"/><path d="M12 18v4"/><path d="m4.93 4.93 2.83 2.83"/><path d="m16.24 16.24 2.83 2.83"/><path d="M2 12h4"/><path d="M18 12h4"/><path d="m4.93 19.07 2.83-2.83"/><path d="m16.24 7.76 2.83-2.83"/></svg>
+        </div>
+        <h3>Agents that actually finish.</h3>
+        <p>Idempotent execution, structured observability, configurable retry semantics. Agents either finish, escalate cleanly, or surface the exact reason they stopped.</p>
+      </div>
+
+      <div class="feature">
+        <div class="feature-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="m7 14 4-4 4 4 5-5"/></svg>
+        </div>
+        <h3>Observability you can act on.</h3>
+        <p>Latency percentiles, claim graphs, escalation paths. Every metric ties back to a request ID — debug an incident with the dashboard, not a vibe.</p>
+      </div>
+
+      <div class="feature">
+        <div class="feature-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+        </div>
+        <h3>Security by construction.</h3>
+        <p>SOC 2 Type II, scoped tokens, per-tenant audit trails, regional data residency. Pen-tested quarterly; reports on request.</p>
+      </div>
+
+      <div class="feature">
+        <div class="feature-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+        </div>
+        <h3>Predictable performance.</h3>
+        <p>Median 120 ms claim latency, p99 under 400 ms. Burst-safe queues with clear backpressure semantics — your tail-end never blocks the head.</p>
+      </div>
+
+      <div class="feature">
+        <div class="feature-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+        </div>
+        <h3>Integrates with your runway.</h3>
+        <p>SDKs for Node, Python, Go, .NET, Dart. CLI for ops. Webhooks for everyone else. We don't ask you to rewrite your stack to talk to ours.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section class="showcase" id="showcase">
+  <div class="container showcase-grid">
+    <div>
+      <span class="eyebrow" style="background: rgba(255,255,255,0.08); color: var(--ht-color-brand-azure-300);"><span class="dot"></span> Customer story</span>
+      <h2>Northwind cut backlog clearance time by 71%.</h2>
+      <p style="margin-top: var(--ht-space-6); font-size: var(--ht-font-size-lg);">"We had two thousand support tickets a day that no human got to. Hierarchy didn't replace our team — it gave us the structure to admit which work was theirs and which wasn't. The rest now resolves on its own."</p>
+      <p style="margin-top: var(--ht-space-6); color: var(--ht-color-neutral-400);">— Priya Subramanian, VP Engineering, Northwind</p>
+      <div class="stat-grid">
+        <div class="stat"><div class="num">71%</div><div class="lbl">Faster backlog clearance</div></div>
+        <div class="stat"><div class="num">2.4k</div><div class="lbl">Tickets resolved per day</div></div>
+        <div class="stat"><div class="num">$840k</div><div class="lbl">Annual ops savings</div></div>
+        <div class="stat"><div class="num">12</div><div class="lbl">Weeks to full rollout</div></div>
+      </div>
+    </div>
+    <div>
+      <img src="../logos/hierarchy-mark.svg" alt="" style="width: 100%; max-width: 360px; opacity: 0.9; filter: drop-shadow(0 0 60px rgba(72, 45, 137, 0.6));">
+    </div>
+  </div>
+</section>
+
+<section class="section" id="pricing">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow"><span class="dot"></span> Pricing</span>
+      <h2>Plans that scale with the work, not the seats.</h2>
+      <p>You pay for tasks resolved, not human licenses. The math gets cheaper as you grow.</p>
+    </div>
+    <div class="pricing">
+
+      <div class="price-card">
+        <h3>Starter</h3>
+        <div class="price">$0<small>/forever</small></div>
+        <p style="font-size: var(--ht-font-size-sm);">For exploration and small teams getting their bearings.</p>
+        <ul>
+          <li>Up to 5,000 tasks/mo</li>
+          <li>2 agents, 1 hierarchy</li>
+          <li>Community support</li>
+          <li>SDK + CLI access</li>
+        </ul>
+        <a class="btn btn-ghost" href="#">Start free</a>
+      </div>
+
+      <div class="price-card featured">
+        <h3>Team</h3>
+        <div class="price">$490<small>/month</small></div>
+        <p style="font-size: var(--ht-font-size-sm);">For operators ready to delegate the long tail at production scale.</p>
+        <ul>
+          <li>Up to 250,000 tasks/mo</li>
+          <li>Unlimited agents and hierarchies</li>
+          <li>SLA: 99.95% uptime</li>
+          <li>SOC 2, audit logs, SAML SSO</li>
+          <li>Priority support, 4-hour response</li>
+        </ul>
+        <a class="btn btn-primary" href="#">Start 30-day trial</a>
+      </div>
+
+      <div class="price-card">
+        <h3>Enterprise</h3>
+        <div class="price" style="font-size: var(--ht-font-size-3xl);">Let's talk</div>
+        <p style="font-size: var(--ht-font-size-sm);">For regulated industries, regional residency, and custom integrations.</p>
+        <ul>
+          <li>Unlimited tasks</li>
+          <li>Regional data residency</li>
+          <li>SLA: 99.99% uptime</li>
+          <li>Dedicated solutions architect</li>
+          <li>Annual security review</li>
+        </ul>
+        <a class="btn btn-ghost" href="#">Contact sales</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section class="cta" id="cta">
+  <div class="container">
+    <h2>Ship the long tail. Today.</h2>
+    <p>Free trial. No credit card. Production-ready in an afternoon.</p>
+    <a class="btn btn-lg" href="#">Create your workspace →</a>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="foot-grid">
+      <div>
+        <img src="../logos/hierarchy-primary.svg" alt="Hierarchy Technologies">
+        <p style="font-size: var(--ht-font-size-sm); max-width: 36ch;">Engineered systems for the long tail of operations.</p>
+      </div>
+      <div>
+        <h4>Platform</h4>
+        <ul><li><a href="#">Tasks</a></li><li><a href="#">Agents</a></li><li><a href="#">Observability</a></li><li><a href="#">Security</a></li></ul>
+      </div>
+      <div>
+        <h4>Resources</h4>
+        <ul><li><a href="#">Docs</a></li><li><a href="#">Status</a></li><li><a href="#">Changelog</a></li><li><a href="components.html">Components</a></li></ul>
+      </div>
+      <div>
+        <h4>Company</h4>
+        <ul><li><a href="#">About</a></li><li><a href="#">Customers</a></li><li><a href="#">Careers</a></li><li><a href="#">Contact</a></li></ul>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 Hierarchy Technologies. All rights reserved.</span>
+      <span>SOC 2 Type II · ISO 27001 · GDPR</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hierarchy Technologies — Brand Token Preview</title>
+  <link rel="icon" type="image/svg+xml" href="../logos/favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Sora:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../tokens/tokens.css">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: var(--ht-font-family-body);
+      font-size: var(--ht-font-size-base);
+      line-height: var(--ht-line-height-normal);
+      color: var(--ht-color-text-primary);
+      background: var(--ht-color-surface-background);
+      -webkit-font-smoothing: antialiased;
+    }
+    .container { max-width: 1280px; margin: 0 auto; padding: var(--ht-space-12) var(--ht-space-6); }
+    h1, h2, h3 { font-family: var(--ht-font-family-display); margin: 0 0 var(--ht-space-4); }
+    h1 { font-size: var(--ht-font-size-5xl); font-weight: 700; letter-spacing: var(--ht-letter-spacing-tight); line-height: var(--ht-line-height-tight); }
+    h2 { font-size: var(--ht-font-size-3xl); font-weight: 600; margin-top: var(--ht-space-12); }
+    h3 { font-size: var(--ht-font-size-xl); font-weight: 600; margin-top: var(--ht-space-8); }
+    p { margin: 0 0 var(--ht-space-4); color: var(--ht-color-text-secondary); }
+    .lede { font-size: var(--ht-font-size-lg); color: var(--ht-color-text-secondary); max-width: 64ch; }
+    code { font-family: var(--ht-font-family-mono); font-size: 0.9em; background: var(--ht-color-surface-raised); padding: 2px 6px; border-radius: var(--ht-radius-sm); }
+    .topbar { background: var(--ht-color-surface-inverse); padding: var(--ht-space-4) var(--ht-space-6); display: flex; align-items: center; justify-content: space-between; }
+    .topbar img { height: 28px; }
+    .topbar nav { display: flex; gap: var(--ht-space-6); }
+    .topbar nav a { color: var(--ht-color-neutral-200); text-decoration: none; font-size: var(--ht-font-size-sm); font-weight: 500; }
+    .topbar nav a:hover { color: var(--ht-color-neutral-0); }
+    .grid { display: grid; gap: var(--ht-space-3); }
+    .swatch-grid { grid-template-columns: repeat(10, 1fr); gap: var(--ht-space-2); }
+    .swatch { border-radius: var(--ht-radius-md); height: 80px; display: flex; flex-direction: column; justify-content: flex-end; padding: var(--ht-space-2); font-size: var(--ht-font-size-xs); font-family: var(--ht-font-family-mono); }
+    .swatch-label { font-weight: 600; }
+    .swatch-hex { opacity: 0.85; }
+    .ramp-name { font-family: var(--ht-font-family-display); font-weight: 600; margin-top: var(--ht-space-6); margin-bottom: var(--ht-space-2); display: block; }
+    .gradient-block { height: 120px; border-radius: var(--ht-radius-lg); background: var(--ht-gradient-brand); display: flex; align-items: center; justify-content: center; color: #fff; font-family: var(--ht-font-family-display); font-weight: 700; letter-spacing: var(--ht-letter-spacing-wider); font-size: var(--ht-font-size-xl); }
+    .scale-row { display: flex; align-items: baseline; gap: var(--ht-space-6); padding: var(--ht-space-3) 0; border-bottom: 1px solid var(--ht-color-neutral-200); }
+    .scale-token { font-family: var(--ht-font-family-mono); font-size: var(--ht-font-size-sm); color: var(--ht-color-text-muted); width: 90px; flex-shrink: 0; }
+    .scale-sample { font-family: var(--ht-font-family-display); font-weight: 600; }
+    .space-row { display: flex; align-items: center; gap: var(--ht-space-4); padding: var(--ht-space-2) 0; }
+    .space-row .swatch-bar { background: var(--ht-color-brand-azure-500); height: 12px; border-radius: var(--ht-radius-sm); }
+    .radius-grid { grid-template-columns: repeat(4, 1fr); }
+    .radius-card { background: var(--ht-color-brand-azure-100); aspect-ratio: 1.4 / 1; display: flex; align-items: center; justify-content: center; font-family: var(--ht-font-family-mono); font-size: var(--ht-font-size-sm); color: var(--ht-color-brand-azure-700); }
+    .shadow-grid { grid-template-columns: repeat(5, 1fr); gap: var(--ht-space-6); padding: var(--ht-space-8) var(--ht-space-4); }
+    .shadow-card { background: #fff; aspect-ratio: 1.4 / 1; border-radius: var(--ht-radius-lg); display: flex; align-items: center; justify-content: center; font-family: var(--ht-font-family-mono); font-size: var(--ht-font-size-sm); color: var(--ht-color-text-muted); }
+    .logos-grid { grid-template-columns: repeat(3, 1fr); gap: var(--ht-space-6); }
+    .logo-card { padding: var(--ht-space-8); border-radius: var(--ht-radius-lg); display: flex; align-items: center; justify-content: center; min-height: 140px; }
+    .logo-card img { max-width: 100%; max-height: 80px; }
+    .logo-card.light { background: var(--ht-color-neutral-50); border: 1px solid var(--ht-color-neutral-200); }
+    .logo-card.dark  { background: var(--ht-color-neutral-900); }
+    .logo-card.gradient { background: var(--ht-gradient-brand); }
+    .caption { font-family: var(--ht-font-family-mono); font-size: var(--ht-font-size-xs); color: var(--ht-color-text-muted); margin-top: var(--ht-space-2); }
+  </style>
+</head>
+<body>
+
+<header class="topbar">
+  <img src="../logos/hierarchy-primary-reversed.svg" alt="Hierarchy Technologies">
+  <nav>
+    <a href="preview.html">Tokens</a>
+    <a href="landing.html">Landing</a>
+    <a href="components.html">Components</a>
+    <a href="../README.md">Docs</a>
+  </nav>
+</header>
+
+<main class="container">
+
+  <h1>Brand token preview</h1>
+  <p class="lede">Open this page to verify the visual system. Every value here is consumed from <code>tokens.css</code>.</p>
+
+  <h2>Brand gradient</h2>
+  <div class="gradient-block">HIERARCHY TECHNOLOGIES</div>
+
+  <h2>Color palette</h2>
+
+  <span class="ramp-name">Brand · Azure</span>
+  <div class="grid swatch-grid" id="azure"></div>
+
+  <span class="ramp-name">Brand · Indigo</span>
+  <div class="grid swatch-grid" id="indigo"></div>
+
+  <span class="ramp-name">Brand · Violet</span>
+  <div class="grid swatch-grid" id="violet"></div>
+
+  <span class="ramp-name">Neutral</span>
+  <div class="grid swatch-grid" id="neutral" style="grid-template-columns: repeat(12, 1fr);"></div>
+
+  <span class="ramp-name">Semantic</span>
+  <div class="grid swatch-grid" id="semantic" style="grid-template-columns: repeat(4, 1fr);"></div>
+
+  <h2>Typography scale</h2>
+  <div class="scale-row"><span class="scale-token">6xl · 700</span><span class="scale-sample" style="font-size: var(--ht-font-size-6xl);">Hierarchy</span></div>
+  <div class="scale-row"><span class="scale-token">5xl · 700</span><span class="scale-sample" style="font-size: var(--ht-font-size-5xl);">Hierarchy</span></div>
+  <div class="scale-row"><span class="scale-token">4xl · 600</span><span class="scale-sample" style="font-size: var(--ht-font-size-4xl);">Hierarchy</span></div>
+  <div class="scale-row"><span class="scale-token">3xl · 600</span><span class="scale-sample" style="font-size: var(--ht-font-size-3xl);">Hierarchy</span></div>
+  <div class="scale-row"><span class="scale-token">2xl · 600</span><span class="scale-sample" style="font-size: var(--ht-font-size-2xl);">Hierarchy</span></div>
+  <div class="scale-row"><span class="scale-token">xl · 500</span><span class="scale-sample" style="font-size: var(--ht-font-size-xl); font-weight: 500;">Hierarchy Technologies</span></div>
+  <div class="scale-row"><span class="scale-token">base · 400</span><span class="scale-sample" style="font-size: var(--ht-font-size-base); font-weight: 400; font-family: var(--ht-font-family-body);">The quick brown fox jumps over the lazy dog. 0123456789</span></div>
+  <div class="scale-row"><span class="scale-token">sm · 400</span><span class="scale-sample" style="font-size: var(--ht-font-size-sm); font-weight: 400; font-family: var(--ht-font-family-body);">Helper text and table cells use this size.</span></div>
+  <div class="scale-row"><span class="scale-token">mono</span><span class="scale-sample" style="font-family: var(--ht-font-family-mono); font-size: var(--ht-font-size-base); font-weight: 400;">const tokens = require('./tokens.json');</span></div>
+
+  <h2>Spacing</h2>
+  <div id="space"></div>
+
+  <h2>Radius</h2>
+  <div class="grid radius-grid" id="radius"></div>
+
+  <h2>Elevation</h2>
+  <div class="grid shadow-grid" id="shadow"></div>
+
+  <h2>Logo variants</h2>
+  <div class="grid logos-grid">
+    <div>
+      <div class="logo-card light"><img src="../logos/hierarchy-primary.svg" alt=""></div>
+      <div class="caption">hierarchy-primary.svg</div>
+    </div>
+    <div>
+      <div class="logo-card dark"><img src="../logos/hierarchy-primary-reversed.svg" alt=""></div>
+      <div class="caption">hierarchy-primary-reversed.svg</div>
+    </div>
+    <div>
+      <div class="logo-card light"><img src="../logos/hierarchy-primary-mono-dark.svg" alt=""></div>
+      <div class="caption">hierarchy-primary-mono-dark.svg</div>
+    </div>
+    <div>
+      <div class="logo-card gradient"><img src="../logos/hierarchy-primary-mono-light.svg" alt=""></div>
+      <div class="caption">hierarchy-primary-mono-light.svg</div>
+    </div>
+    <div>
+      <div class="logo-card light"><img src="../logos/hierarchy-mark.svg" alt="" style="max-height: 100px;"></div>
+      <div class="caption">hierarchy-mark.svg</div>
+    </div>
+    <div>
+      <div class="logo-card light"><img src="../logos/hierarchy-wordmark.svg" alt=""></div>
+      <div class="caption">hierarchy-wordmark.svg</div>
+    </div>
+  </div>
+
+</main>
+
+<script>
+  const azureSteps = [50,100,200,300,400,500,600,700,800,900];
+  const indigoSteps = azureSteps;
+  const violetSteps = azureSteps;
+  const neutralSteps = [0,50,100,200,300,400,500,600,700,800,900,1000];
+  const semantic = [
+    { label: 'success-500', token: '--ht-color-success-500' },
+    { label: 'warning-500', token: '--ht-color-warning-500' },
+    { label: 'danger-500',  token: '--ht-color-danger-500'  },
+    { label: 'info-500',    token: '--ht-color-info-500'    },
+  ];
+  const space = [
+    { label: 'space-1',  token: '--ht-space-1'  },
+    { label: 'space-2',  token: '--ht-space-2'  },
+    { label: 'space-3',  token: '--ht-space-3'  },
+    { label: 'space-4',  token: '--ht-space-4'  },
+    { label: 'space-6',  token: '--ht-space-6'  },
+    { label: 'space-8',  token: '--ht-space-8'  },
+    { label: 'space-12', token: '--ht-space-12' },
+    { label: 'space-16', token: '--ht-space-16' },
+    { label: 'space-24', token: '--ht-space-24' },
+  ];
+  const radii = [
+    { label: 'sm',   token: '--ht-radius-sm'   },
+    { label: 'md',   token: '--ht-radius-md'   },
+    { label: 'lg',   token: '--ht-radius-lg'   },
+    { label: 'xl',   token: '--ht-radius-xl'   },
+  ];
+  const shadows = ['xs','sm','md','lg','xl'];
+
+  function readVar(name) {
+    return getComputedStyle(document.documentElement).getPropertyValue(name).trim();
+  }
+
+  function el(tag, className, text) {
+    const node = document.createElement(tag);
+    if (className) node.className = className;
+    if (text != null) node.textContent = text;
+    return node;
+  }
+
+  function buildRamp(elId, family, steps) {
+    const host = document.getElementById(elId);
+    steps.forEach(s => {
+      const token = `--ht-color-${family}-${s}`;
+      const hex = readVar(token);
+      const div = el('div', 'swatch');
+      div.style.background = `var(${token})`;
+      const isLight = parseInt(s) <= 300 || s === 0 || s === 50;
+      div.style.color = isLight ? 'var(--ht-color-neutral-900)' : '#ffffff';
+      div.appendChild(el('span', 'swatch-label', String(s)));
+      div.appendChild(el('span', 'swatch-hex', hex));
+      host.appendChild(div);
+    });
+  }
+
+  buildRamp('azure',  'brand-azure',  azureSteps);
+  buildRamp('indigo', 'brand-indigo', indigoSteps);
+  buildRamp('violet', 'brand-violet', violetSteps);
+  buildRamp('neutral', 'neutral',     neutralSteps);
+
+  const semEl = document.getElementById('semantic');
+  semantic.forEach(s => {
+    const div = el('div', 'swatch');
+    div.style.background = `var(${s.token})`;
+    div.style.color = '#fff';
+    div.appendChild(el('span', 'swatch-label', s.label));
+    div.appendChild(el('span', 'swatch-hex', readVar(s.token)));
+    semEl.appendChild(div);
+  });
+
+  const spaceEl = document.getElementById('space');
+  space.forEach(s => {
+    const row = el('div', 'space-row');
+    row.appendChild(el('span', 'scale-token', s.label));
+    const bar = el('span', 'swatch-bar');
+    bar.style.width = `var(${s.token})`;
+    row.appendChild(bar);
+    row.appendChild(el('span', 'caption', readVar(s.token)));
+    spaceEl.appendChild(row);
+  });
+
+  const rEl = document.getElementById('radius');
+  radii.forEach(r => {
+    const card = el('div', 'radius-card', r.label);
+    card.style.borderRadius = `var(${r.token})`;
+    rEl.appendChild(card);
+  });
+
+  const sEl = document.getElementById('shadow');
+  shadows.forEach(s => {
+    const card = el('div', 'shadow-card', `shadow-${s}`);
+    card.style.boxShadow = `var(--ht-shadow-${s})`;
+    sEl.appendChild(card);
+  });
+</script>
+</body>
+</html>

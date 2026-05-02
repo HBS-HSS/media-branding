@@ -1,0 +1,181 @@
+/* Hierarchy Technologies — design tokens (CSS custom properties).
+ * Derived from tokens.json. Do not edit by hand — regenerate from source.
+ */
+
+:root {
+  /* Brand — azure */
+  --ht-color-brand-azure-50:  #EEF2FA;
+  --ht-color-brand-azure-100: #DBE3F4;
+  --ht-color-brand-azure-200: #B3C2E5;
+  --ht-color-brand-azure-300: #8AA1D7;
+  --ht-color-brand-azure-400: #6480C2;
+  --ht-color-brand-azure-500: #4261AD;
+  --ht-color-brand-azure-600: #36529A;
+  --ht-color-brand-azure-700: #2A4280;
+  --ht-color-brand-azure-800: #1F3266;
+  --ht-color-brand-azure-900: #15224D;
+
+  /* Brand — indigo */
+  --ht-color-brand-indigo-50:  #EFEDFA;
+  --ht-color-brand-indigo-100: #DBD7F2;
+  --ht-color-brand-indigo-200: #B6AEE0;
+  --ht-color-brand-indigo-300: #8C82CB;
+  --ht-color-brand-indigo-400: #635AB0;
+  --ht-color-brand-indigo-500: #392F8E;
+  --ht-color-brand-indigo-600: #2F2778;
+  --ht-color-brand-indigo-700: #251E60;
+  --ht-color-brand-indigo-800: #1B1648;
+  --ht-color-brand-indigo-900: #110D30;
+
+  /* Brand — violet */
+  --ht-color-brand-violet-50:  #F0EDF9;
+  --ht-color-brand-violet-100: #DDD7F1;
+  --ht-color-brand-violet-200: #BAAEE0;
+  --ht-color-brand-violet-300: #9282CB;
+  --ht-color-brand-violet-400: #6A55AE;
+  --ht-color-brand-violet-500: #482D89;
+  --ht-color-brand-violet-600: #3C2575;
+  --ht-color-brand-violet-700: #2F1D5F;
+  --ht-color-brand-violet-800: #221548;
+  --ht-color-brand-violet-900: #160D30;
+
+  /* Neutral */
+  --ht-color-neutral-0:    #FFFFFF;
+  --ht-color-neutral-50:   #FAFAFA;
+  --ht-color-neutral-100:  #F4F4F5;
+  --ht-color-neutral-200:  #E4E4E7;
+  --ht-color-neutral-300:  #D4D4D8;
+  --ht-color-neutral-400:  #A1A1AA;
+  --ht-color-neutral-500:  #71717A;
+  --ht-color-neutral-600:  #52525B;
+  --ht-color-neutral-700:  #3F3F46;
+  --ht-color-neutral-800:  #27272A;
+  --ht-color-neutral-900:  #231F20;
+  --ht-color-neutral-1000: #000000;
+
+  /* Semantic */
+  --ht-color-success-50:  #ECFDF5;
+  --ht-color-success-500: #16A34A;
+  --ht-color-success-700: #15803D;
+  --ht-color-warning-50:  #FFFBEB;
+  --ht-color-warning-500: #D97706;
+  --ht-color-warning-700: #B45309;
+  --ht-color-danger-50:   #FEF2F2;
+  --ht-color-danger-500:  #DC2626;
+  --ht-color-danger-700:  #B91C1C;
+  --ht-color-info-50:     #EEF2FA;
+  --ht-color-info-500:    var(--ht-color-brand-azure-500);
+  --ht-color-info-700:    var(--ht-color-brand-azure-700);
+
+  /* Surface */
+  --ht-color-surface-background: var(--ht-color-neutral-0);
+  --ht-color-surface-subtle:     var(--ht-color-neutral-50);
+  --ht-color-surface-raised:     var(--ht-color-neutral-100);
+  --ht-color-surface-inverse:    var(--ht-color-neutral-900);
+
+  /* Text */
+  --ht-color-text-primary:   var(--ht-color-neutral-900);
+  --ht-color-text-secondary: var(--ht-color-neutral-700);
+  --ht-color-text-muted:     var(--ht-color-neutral-500);
+  --ht-color-text-inverse:   var(--ht-color-neutral-0);
+  --ht-color-text-link:      var(--ht-color-brand-azure-700);
+
+  /* Brand gradient — light surfaces only */
+  --ht-gradient-brand: linear-gradient(90deg, #4261AD 0%, #392F8E 50%, #482D89 100%);
+  /* Brand gradient — dark surfaces (light-shifted, -300 ramp) */
+  --ht-gradient-brand-reversed: linear-gradient(90deg, #8AA1D7 0%, #8C82CB 50%, #9282CB 100%);
+
+  /* Typography */
+  --ht-font-family-display: 'Sora', 'Manrope', 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --ht-font-family-body:    'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  --ht-font-family-mono:    'JetBrains Mono', 'Fira Code', ui-monospace, SFMono-Regular, Menlo, monospace;
+
+  --ht-font-weight-regular:  400;
+  --ht-font-weight-medium:   500;
+  --ht-font-weight-semibold: 600;
+  --ht-font-weight-bold:     700;
+
+  --ht-font-size-xs:   0.75rem;
+  --ht-font-size-sm:   0.875rem;
+  --ht-font-size-base: 1rem;
+  --ht-font-size-lg:   1.125rem;
+  --ht-font-size-xl:   1.25rem;
+  --ht-font-size-2xl:  1.563rem;
+  --ht-font-size-3xl:  1.953rem;
+  --ht-font-size-4xl:  2.441rem;
+  --ht-font-size-5xl:  3.052rem;
+  --ht-font-size-6xl:  3.815rem;
+
+  --ht-line-height-tight:   1.1;
+  --ht-line-height-snug:    1.25;
+  --ht-line-height-normal:  1.5;
+  --ht-line-height-relaxed: 1.75;
+
+  --ht-letter-spacing-tight:  -0.02em;
+  --ht-letter-spacing-normal: 0;
+  --ht-letter-spacing-wide:   0.05em;
+  --ht-letter-spacing-wider:  0.12em;
+
+  /* Spacing (4pt scale) */
+  --ht-space-0:  0;
+  --ht-space-1:  0.25rem;
+  --ht-space-2:  0.5rem;
+  --ht-space-3:  0.75rem;
+  --ht-space-4:  1rem;
+  --ht-space-5:  1.25rem;
+  --ht-space-6:  1.5rem;
+  --ht-space-8:  2rem;
+  --ht-space-10: 2.5rem;
+  --ht-space-12: 3rem;
+  --ht-space-16: 4rem;
+  --ht-space-24: 6rem;
+
+  /* Radius */
+  --ht-radius-none:   0;
+  --ht-radius-sm:     0.25rem;
+  --ht-radius-md:     0.5rem;
+  --ht-radius-lg:     0.75rem;
+  --ht-radius-xl:     1rem;
+  --ht-radius-pill:   9999px;
+  --ht-radius-circle: 50%;
+
+  /* Elevation */
+  --ht-shadow-xs: 0 1px 2px 0 rgba(35, 31, 32, 0.05);
+  --ht-shadow-sm: 0 1px 3px 0 rgba(35, 31, 32, 0.10), 0 1px 2px -1px rgba(35, 31, 32, 0.10);
+  --ht-shadow-md: 0 4px 6px -1px rgba(35, 31, 32, 0.10), 0 2px 4px -2px rgba(35, 31, 32, 0.10);
+  --ht-shadow-lg: 0 10px 15px -3px rgba(35, 31, 32, 0.10), 0 4px 6px -4px rgba(35, 31, 32, 0.10);
+  --ht-shadow-xl: 0 20px 25px -5px rgba(35, 31, 32, 0.10), 0 8px 10px -6px rgba(35, 31, 32, 0.10);
+
+  /* Breakpoints (informational — for matching media queries in apps) */
+  --ht-breakpoint-sm:  640px;
+  --ht-breakpoint-md:  768px;
+  --ht-breakpoint-lg:  1024px;
+  --ht-breakpoint-xl:  1280px;
+  --ht-breakpoint-2xl: 1536px;
+
+  /* Motion */
+  --ht-duration-instant: 0ms;
+  --ht-duration-fast:    120ms;
+  --ht-duration-base:    200ms;
+  --ht-duration-slow:    320ms;
+  --ht-duration-slower:  480ms;
+  --ht-easing-linear:     linear;
+  --ht-easing-standard:   cubic-bezier(0.2, 0, 0, 1);
+  --ht-easing-emphasis:   cubic-bezier(0.3, 0, 0, 1);
+  --ht-easing-decelerate: cubic-bezier(0, 0, 0, 1);
+  --ht-easing-accelerate: cubic-bezier(0.3, 0, 1, 1);
+}
+
+/* Dark mode override — opt in via [data-theme="dark"] on root or a container. */
+[data-theme="dark"] {
+  --ht-color-surface-background: var(--ht-color-neutral-900);
+  --ht-color-surface-subtle:     var(--ht-color-neutral-800);
+  --ht-color-surface-raised:     var(--ht-color-neutral-700);
+  --ht-color-surface-inverse:    var(--ht-color-neutral-0);
+
+  --ht-color-text-primary:   var(--ht-color-neutral-0);
+  --ht-color-text-secondary: var(--ht-color-neutral-200);
+  --ht-color-text-muted:     var(--ht-color-neutral-400);
+  --ht-color-text-inverse:   var(--ht-color-neutral-900);
+  --ht-color-text-link:      var(--ht-color-brand-azure-300);
+}

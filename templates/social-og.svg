@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Hierarchy Technologies — Social Open Graph image
+  1200 × 630 (Facebook/LinkedIn/Twitter recommended)
+  Replace [HEADLINE] with the page-specific phrase before exporting.
+  Export to PNG at 2× (2400×1260) for retina, or 1× for static OG meta.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630"
+     font-family="'Sora','Inter',system-ui,sans-serif">
+  <defs>
+    <linearGradient id="og-bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0"   stop-color="#1A1535"/>
+      <stop offset="0.5" stop-color="#231F20"/>
+      <stop offset="1"   stop-color="#231F20"/>
+    </linearGradient>
+    <radialGradient id="og-glow-azure" cx="0.18" cy="0.30" r="0.50">
+      <stop offset="0"   stop-color="#4261AD" stop-opacity="0.55"/>
+      <stop offset="1"   stop-color="#4261AD" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="og-glow-violet" cx="0.85" cy="0.85" r="0.55">
+      <stop offset="0"   stop-color="#482D89" stop-opacity="0.65"/>
+      <stop offset="1"   stop-color="#482D89" stop-opacity="0"/>
+    </radialGradient>
+    <!-- Canonical H mark — copy of `logos/hierarchy-mark.svg` path -->
+    <symbol id="ht-mark" viewBox="170 275 260 296">
+      <path d="M348.5,312.09h17.5v98.56h-141.7v-98.56h17.5v81.06h106.7v-81.06ZM366.05,312.04h-17.6v81.06h-106.6v-81.06h-17.6v98.66h141.8v-98.66ZM224.35,312.14h17.4v81.06h106.8v-81.06h17.4v98.46h-141.6v-98.46ZM241.8,435.22h-17.5v110.56h17.5v-93.06h106.7v64.93h17.5v-82.43h-124.2ZM241.85,452.77h106.6v64.93h17.6v-82.53h-141.8v110.66h17.6v-93.06ZM224.35,435.27h141.6v82.33h-17.4v-64.93h-106.8v93.06h-17.4v-110.46ZM200.63,316.62v211.2c6.65,3.25,11.25,10.06,11.25,17.96,0,11.05-8.95,20-20,20s-20-8.95-20-20c0-7.9,4.6-14.72,11.25-17.96v-211.2c-6.65-3.25-11.25-10.06-11.25-17.96,0-11.05,8.95-20,20-20s20,8.95,20,20c0,7.9-4.6,14.72-11.25,17.96ZM183.13,298.65c0,4.83,3.92,8.75,8.75,8.75s8.75-3.92,8.75-8.75-3.92-8.75-8.75-8.75-8.75,3.92-8.75,8.75ZM200.63,545.78c0-4.83-3.92-8.75-8.75-8.75s-8.75,3.92-8.75,8.75,3.92,8.75,8.75,8.75,8.75-3.92,8.75-8.75ZM418.42,545.78c0,11.05-8.95,20-20,20s-20-8.95-20-20c0-7.9,4.6-14.72,11.25-17.96v-211.2c-6.65-3.25-11.25-10.06-11.25-17.96,0-11.05,8.95-20,20-20s20,8.95,20,20c0,7.9-4.6,14.72-11.25,17.96v211.2c6.65,3.25,11.25,10.06,11.25,17.96ZM389.67,298.65c0,4.83,3.92,8.75,8.75,8.75s8.75-3.92,8.75-8.75-3.92-8.75-8.75-8.75-8.75,3.92-8.75,8.75ZM407.17,545.78c0-4.83-3.92-8.75-8.75-8.75s-8.75,3.92-8.75,8.75,3.92,8.75,8.75,8.75,8.75-3.92,8.75-8.75Z"/>
+    </symbol>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="630" fill="url(#og-bg)"/>
+  <rect width="1200" height="630" fill="url(#og-glow-azure)"/>
+  <rect width="1200" height="630" fill="url(#og-glow-violet)"/>
+
+  <!-- Subtle grid -->
+  <g opacity="0.06" stroke="#FFFFFF" stroke-width="1">
+    <path d="M0 90  H1200"/><path d="M0 180 H1200"/><path d="M0 270 H1200"/>
+    <path d="M0 360 H1200"/><path d="M0 450 H1200"/><path d="M0 540 H1200"/>
+    <path d="M120 0  V630"/><path d="M240 0 V630"/><path d="M360 0 V630"/>
+    <path d="M480 0  V630"/><path d="M600 0 V630"/><path d="M720 0 V630"/>
+    <path d="M840 0  V630"/><path d="M960 0 V630"/><path d="M1080 0 V630"/>
+  </g>
+
+  <!-- H mark — referenced from <symbol> defined above -->
+  <use href="#ht-mark" x="64" y="64" width="84" height="98" fill="#FFFFFF"/>
+
+  <!-- Eyebrow -->
+  <g transform="translate(64, 268)">
+    <rect x="0" y="0" width="290" height="36" rx="18" fill="#4261AD" fill-opacity="0.18" stroke="#4261AD" stroke-opacity="0.4" stroke-width="1"/>
+    <circle cx="22" cy="18" r="4" fill="#9282CB"/>
+    <text x="38" y="24" fill="#8AA1D7" font-size="14" font-weight="600" letter-spacing="3">HIERARCHY · TECHNOLOGIES</text>
+  </g>
+
+  <!-- Headline -->
+  <text x="64" y="380" fill="#FFFFFF" font-size="68" font-weight="700" letter-spacing="-1.5">[HEADLINE GOES HERE]</text>
+  <text x="64" y="450" fill="#FFFFFF" font-size="68" font-weight="700" letter-spacing="-1.5">— up to two lines.</text>
+
+  <!-- Subline -->
+  <text x="64" y="520" fill="#A1A1AA" font-size="22" font-weight="400">[Optional supporting line — keep under 80 characters.]</text>
+
+  <!-- URL footer -->
+  <text x="64" y="580" fill="#8AA1D7" font-size="18" font-weight="500" letter-spacing="2">HIERARCHY.TECH</text>
+</svg>

@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tail-Ed Care — Awards Flyer · Variant A · Engineered</title>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  /* Hierarchy Technologies design tokens (from branding/tokens/tokens.css) */
+  :root {
+    --azure-50:  #EEF2FA; --azure-100: #DBE3F4; --azure-200: #B3C2E5;
+    --azure-300: #8AA1D7; --azure-500: #4261AD; --azure-700: #2A4280; --azure-800: #1F3266;
+    --indigo-300: #8C82CB; --indigo-500: #392F8E; --indigo-700: #251E60;
+    --violet-300: #9282CB; --violet-500: #482D89; --violet-700: #2F1D5F;
+    --ink:       #231F20;
+    --n-50: #FAFAFA; --n-100: #F4F4F5; --n-200: #E4E4E7; --n-300: #D4D4D8;
+    --n-400: #A1A1AA; --n-500: #71717A; --n-600: #52525B; --n-700: #3F3F46;
+    --success: #16A34A; --success-bg: #ECFDF5; --success-700: #15803D;
+    --warning: #D97706; --warning-bg: #FFFBEB; --warning-700: #B45309;
+    --gold:    #F2B441; --gold-dk: #C8851F;
+    --gradient-brand: linear-gradient(135deg, #4261AD 0%, #392F8E 50%, #482D89 100%);
+  }
+
+  html, body {
+    width: 100%;
+    min-height: 100vh;
+    background: #d0d0d0;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    padding: 32px 16px;
+    font-family: 'Inter', system-ui, sans-serif;
+    color: var(--ink);
+  }
+
+  /* A4 canvas */
+  .page {
+    width: 794px;
+    min-height: 1123px;
+    background: white;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 8px 48px rgba(0,0,0,0.22);
+  }
+
+  /* ───── HEADER (gradient panel) ───── */
+  .header {
+    position: relative;
+    background: var(--gradient-brand);
+    padding: 18px 44px 0;
+    overflow: hidden;
+    color: white;
+  }
+  .header::before {
+    content: ""; position: absolute; inset: 0;
+    background-image:
+      url('https://hss-uk.org.uk/wp-content/uploads/2024/01/young-1024x695.jpeg');
+    background-size: cover; background-position: center top;
+    opacity: 0.10; mix-blend-mode: luminosity;
+    pointer-events: none;
+  }
+  .header > * { position: relative; z-index: 2; }
+
+  
+
+  .header-top {
+    display: flex; align-items: center; justify-content: space-between;
+    margin-top: 28px; margin-bottom: 18px;
+  }
+  .brand-lockup {
+    display: flex; align-items: center; gap: 12px;
+    background: rgba(255,255,255,0.14);
+    border: none;
+    border-radius: 14px;
+    padding: 8px 14px;
+    backdrop-filter: blur(10px);
+  }
+  .brand-lockup img { height: 38px; width: auto; display: block; }
+  .brand-lockup-text { line-height: 1.05; }
+  .brand-lockup-text .top {
+    font-family: 'Sora', sans-serif;
+    font-weight: 700; font-size: 12.5px; color: white; letter-spacing: 0.2px;
+  }
+  .brand-lockup-text .bot {
+    font-family: 'Inter', sans-serif;
+    font-weight: 600; font-size: 8.5px; color: var(--azure-300);
+    letter-spacing: 1.5px; text-transform: uppercase; margin-top: 1px;
+  }
+
+  .product-name {
+    text-align: right;
+  }
+  .product-name h2 {
+    font-family: 'Sora', sans-serif;
+    font-weight: 800; font-size: 30px; color: white; line-height: 1;
+    letter-spacing: -0.5px;
+  }
+  .product-name .tag {
+    font-family: 'Inter', sans-serif;
+    font-weight: 600; font-size: 9.5px; color: rgba(255,255,255,0.75);
+    letter-spacing: 1.5px; text-transform: uppercase; margin-top: 5px;
+  }
+  .product-name .tag .sep { color: rgba(255,255,255,0.4); margin: 0 5px; }
+
+  /* Award trophy pill — top-right corner */
+  .award-pill {
+    position: absolute; top: 14px; right: 18px;
+    background: rgba(255,255,255,0.95); backdrop-filter: blur(8px);
+    border-radius: 28px;
+    padding: 5px 12px 5px 6px;
+    display: flex; align-items: center; gap: 8px;
+    z-index: 5;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.25);
+  }
+  .award-pill .trophy {
+    width: 28px; height: 28px; border-radius: 50%;
+    background: linear-gradient(135deg, var(--gold), var(--gold-dk));
+    display: flex; align-items: center; justify-content: center; font-size: 14px;
+  }
+  .award-pill .label { font-family: 'Sora', sans-serif; line-height: 1.1; }
+  .award-pill .label small {
+    display: block; font-size: 8px; font-weight: 700;
+    color: var(--gold-dk); letter-spacing: 1.6px; text-transform: uppercase;
+  }
+  .award-pill .label strong {
+    display: block; font-size: 11px; font-weight: 800; color: var(--ink);
+  }
+
+  /* Hero */
+  .hero { padding: 4px 0 14px; }
+  .hero-eyebrow {
+    display: inline-block;
+    background: rgba(255,255,255,0.18);
+    border: 1px solid rgba(255,255,255,0.28);
+    color: white; font-family: 'Sora', sans-serif;
+    font-weight: 700; font-size: 10px; letter-spacing: 2px;
+    text-transform: uppercase; padding: 4px 12px; border-radius: 20px;
+    margin-bottom: 10px;
+  }
+  .hero h1 {
+    font-family: 'Sora', sans-serif;
+    font-weight: 800; font-size: 30px; color: white; line-height: 1.05;
+    letter-spacing: -0.8px; max-width: 580px;
+  }
+  .hero h1 em { font-style: normal; color: var(--azure-300); }
+  .hero-sub {
+    margin-top: 8px; color: rgba(255,255,255,0.85);
+    font-size: 12px; max-width: 540px; line-height: 1.5;
+    font-weight: 500;
+  }
+
+  /* Hero stats band */
+  .hero-stats {
+    display: grid; grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 10px; margin-top: 14px;
+  }
+  .hero-stat {
+    background: rgba(255,255,255,0.14);
+    border: none;
+    border-radius: 10px;
+    padding: 9px 12px;
+    backdrop-filter: blur(8px);
+  }
+  .hero-stat .v {
+    font-family: 'Sora', sans-serif;
+    font-weight: 800; font-size: 24px; color: white; line-height: 1;
+  }
+  .hero-stat .v small { font-size: 16px; color: rgba(255,255,255,0.7); }
+  .hero-stat .l {
+    font-family: 'Inter', sans-serif;
+    font-size: 9px; font-weight: 700;
+    color: rgba(255,255,255,0.7); margin-top: 5px;
+    text-transform: uppercase; letter-spacing: 0.5px;
+  }
+
+  /* ───── BODY ───── */
+  .body {
+    padding: 14px 44px;
+    display: flex; flex-direction: column; gap: 10px;
+  }
+
+  /* Intro */
+  .intro {
+    font-size: 12px; color: var(--n-700); line-height: 1.55;
+    border-left: 3px solid var(--azure-500);
+    padding: 2px 0 2px 12px;
+  }
+  .intro b { color: var(--indigo-700); font-weight: 700; }
+
+  /* Audience-grouped feature grid */
+  .audience-row {
+    display: grid; grid-template-columns: 130px 1fr;
+    gap: 10px; align-items: center;
+  }
+  .audience-label {
+    font-family: 'Sora', sans-serif;
+    font-weight: 700; font-size: 10px; letter-spacing: 1.8px;
+    text-transform: uppercase; line-height: 1.15;
+  }
+  .audience-label.care    { color: var(--azure-700); }
+  .audience-label.mgr     { color: var(--indigo-700); }
+  .audience-label.admin   { color: var(--violet-700); }
+  .audience-label small {
+    display: block; font-size: 8.5px; font-weight: 600;
+    color: var(--n-500); margin-top: 1px; letter-spacing: 0.5px;
+    text-transform: none;
+  }
+
+  .features-grid {
+    display: grid; grid-template-columns: 1fr 1fr 1fr;
+    gap: 7px;
+  }
+  .feature-card {
+    background: white;
+    border: 1px solid var(--n-200);
+    border-left-width: 3px;
+    border-radius: 9px;
+    padding: 7px 9px;
+    display: flex; align-items: flex-start; gap: 8px;
+  }
+  .feature-card.care    { border-left-color: var(--azure-500); }
+  .feature-card.mgr     { border-left-color: var(--indigo-500); }
+  .feature-card.admin   { border-left-color: var(--violet-500); }
+  .feature-card .icon {
+    width: 26px; height: 26px; border-radius: 6px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 14px; flex-shrink: 0;
+  }
+  .feature-card.care  .icon { background: var(--azure-50); }
+  .feature-card.mgr   .icon { background: #EFEDFA; }
+  .feature-card.admin .icon { background: #F0EDF9; }
+  .feature-card .text h3 {
+    font-family: 'Sora', sans-serif;
+    font-weight: 700; font-size: 11px; color: var(--ink);
+    line-height: 1.15; margin-bottom: 1px;
+  }
+  .feature-card .text p {
+    font-size: 9.5px; color: var(--n-600); line-height: 1.35;
+  }
+
+  /* TAi block */
+  .tai {
+    background: linear-gradient(135deg, #1A1535 0%, #2C1042 35%, #482D89 100%);
+    border-radius: 12px; padding: 10px 14px; color: white;
+    position: relative; overflow: hidden;
+  }
+  
+  .tai-head {
+    display: flex; align-items: center; gap: 10px; margin-bottom: 7px;
+    position: relative; z-index: 2;
+  }
+  .tai-mark {
+    width: 30px; height: 30px; border-radius: 8px;
+    background: rgba(255,255,255,0.12);
+    display: flex; align-items: center; justify-content: center;
+  }
+  .tai-mark svg { width: 18px; height: 18px; }
+  .tai-title {
+    font-family: 'Sora', sans-serif; font-weight: 800;
+    font-size: 16px; letter-spacing: 0.3px;
+  }
+  .tai-sub { font-size: 10.5px; color: rgba(255,255,255,0.7); font-weight: 500; }
+  .tai-spacer { flex: 1; }
+  .tai-badge {
+    background: var(--azure-300); color: var(--indigo-700);
+    font-family: 'Sora', sans-serif; font-weight: 700;
+    font-size: 9px; letter-spacing: 1.5px; text-transform: uppercase;
+    padding: 3px 9px; border-radius: 18px;
+  }
+  .tai-grid {
+    display: grid; grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 5px;
+    position: relative; z-index: 2;
+  }
+  .tai-chip {
+    background: rgba(255,255,255,0.14);
+    border: none;
+    border-radius: 6px; padding: 4px 8px;
+    display: flex; align-items: center; gap: 6px;
+  }
+  .tai-chip .dot {
+    width: 6px; height: 6px; border-radius: 50%;
+    background: var(--gold); flex-shrink: 0;
+  }
+  .tai-chip .text {
+    font-family: 'Sora', sans-serif; font-size: 9.5px;
+    font-weight: 700; line-height: 1.1; color: white;
+  }
+  .tai-chip .text small {
+    display: block;
+    font-family: 'Inter', sans-serif; font-size: 8px; font-weight: 500;
+    color: rgba(255,255,255,0.65); margin-top: 1px;
+    text-transform: none; letter-spacing: 0;
+  }
+
+  /* Bottom row — UK + Compare */
+  .bottom-row {
+    display: grid; grid-template-columns: 1fr 1.4fr; gap: 10px;
+  }
+
+  /* UK trust card */
+  .uk-card {
+    background: linear-gradient(135deg, var(--azure-50) 0%, #F0EDF9 100%);
+    border-radius: 12px; padding: 10px 14px;
+    border-left: 3px solid var(--azure-500);
+    display: flex; flex-direction: column; gap: 6px; justify-content: center;
+  }
+  .uk-card-head {
+    display: flex; align-items: center; gap: 10px;
+  }
+  .uk-flag { font-size: 22px; }
+  .uk-card h4 {
+    font-family: 'Sora', sans-serif;
+    font-weight: 700; font-size: 13px; color: var(--ink); line-height: 1.1;
+  }
+  .uk-card p { font-size: 9.5px; color: var(--n-600); line-height: 1.4; }
+  .uk-tags { display: flex; gap: 4px; flex-wrap: wrap; }
+  .uk-tag {
+    background: white; border: 1px solid var(--azure-200);
+    color: var(--azure-700); font-family: 'Sora', sans-serif;
+    font-size: 8.5px; font-weight: 700; padding: 2px 7px; border-radius: 12px;
+  }
+
+  /* Compare table */
+  .compare {
+    background: white; border: 1px solid var(--n-200);
+    border-radius: 12px; padding: 8px 12px;
+  }
+  .compare-head {
+    display: grid; grid-template-columns: 1.3fr 1fr 1fr;
+    gap: 10px; padding-bottom: 5px;
+    border-bottom: 1.5px dashed var(--n-200);
+    margin-bottom: 4px;
+  }
+  .compare-head h4 {
+    font-family: 'Sora', sans-serif;
+    font-weight: 700; font-size: 12px; color: var(--indigo-700);
+  }
+  .compare-head .col-h {
+    font-family: 'Sora', sans-serif; font-size: 8.5px;
+    font-weight: 700; letter-spacing: 1.2px;
+    text-transform: uppercase; text-align: center; padding-top: 2px;
+  }
+  .compare-head .col-h.typ { color: var(--n-400); }
+  .compare-head .col-h.tec { color: var(--azure-500); }
+  .compare-row {
+    display: grid; grid-template-columns: 1.3fr 1fr 1fr;
+    gap: 10px; padding: 2px 0; align-items: center;
+  }
+  .compare-row + .compare-row { border-top: 1px dotted var(--n-100); }
+  .compare-row .feat {
+    font-family: 'Sora', sans-serif;
+    font-size: 10px; font-weight: 600; color: var(--ink);
+  }
+  .compare-row .typ {
+    font-size: 9px; color: var(--n-500); text-align: center;
+  }
+  .compare-row .tec {
+    font-size: 9.5px; color: var(--azure-500); text-align: center;
+    font-weight: 700; font-family: 'Sora', sans-serif;
+  }
+  .compare-row .tec .check { color: var(--success); margin-right: 3px; }
+
+  /* ───── FOOTER ───── */
+  .footer {
+    background: var(--ink); color: white;
+    padding: 10px 44px;
+    display: flex; align-items: center; justify-content: space-between;
+    margin-top: auto;
+    border-top: 4px solid var(--azure-500);
+  }
+  .footer-contact {
+    font-family: 'Inter', sans-serif;
+    font-size: 10.5px; line-height: 1.55;
+    color: rgba(255,255,255,0.85);
+  }
+  .footer-contact .top {
+    font-family: 'Sora', sans-serif;
+    font-weight: 700; font-size: 12px; color: white;
+    margin-bottom: 2px;
+  }
+  .footer-contact .top .by { color: var(--azure-300); font-weight: 500; }
+  .footer-contact .meta {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px; color: rgba(255,255,255,0.55); margin-top: 3px;
+  }
+
+  .platform-block {
+    display: flex; flex-direction: column; align-items: flex-end; gap: 5px;
+  }
+  .platform-block .label {
+    font-family: 'Sora', sans-serif;
+    font-size: 8.5px; font-weight: 700; color: var(--azure-300);
+    letter-spacing: 1.5px; text-transform: uppercase;
+  }
+  .platform-row { display: flex; gap: 5px; }
+  .platform-badge {
+    display: flex; align-items: center; gap: 5px;
+    background: rgba(255,255,255,0.10);
+    border: 1px solid rgba(255,255,255,0.20);
+    border-radius: 18px; padding: 4px 10px;
+    font-family: 'Sora', sans-serif;
+    font-size: 10px; font-weight: 700; color: white;
+  }
+  .platform-badge svg { width: 12px; height: 12px; }
+
+  @media print {
+    @page { size: A4 portrait; margin: 0; }
+    html, body { background: white; padding: 0; margin: 0; width: 100%; }
+    body { display: block; }
+    .page { width: 100%; min-height: 100vh; box-shadow: none; margin: 0; border-radius: 0; }
+    * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- ═══════════ HEADER (brand gradient) ═══════════ -->
+  <div class="header">
+    <!-- Award pill -->
+    <div class="award-pill">
+      <div class="trophy">🏆</div>
+      <div class="label">
+        <small>Finalist · May 2026</small>
+        <strong>Digital Innovation & People Award</strong>
+      </div>
+    </div>
+
+    <!-- Top: brand + product -->
+    <div class="header-top">
+      <div class="brand-lockup">
+        <img src="assets/htech-primary-reversed.svg" alt="Hierarchy Technologies">
+      </div>
+      <div class="product-name">
+        <h2>Tail-Ed Care</h2>
+        <div class="tag">
+          <span>Built for UK Adult Social Care</span>
+          <span class="sep">·</span>
+          <span>Part of HSS UK</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Hero -->
+    <div class="hero">
+      <span class="hero-eyebrow">Smarter care, engineered.</span>
+      <h1>One platform. Every role. <em>One source of truth.</em></h1>
+      <p class="hero-sub">
+        Tail-Ed Care is the digital care management platform built by Hierarchy Technologies for UK Adult Social Care providers — putting compliance, communication and quality of care at every team member's fingertips.
+      </p>
+
+      <!-- Hero stats -->
+      <div class="hero-stats">
+        <div class="hero-stat"><div class="v">100<small>%</small></div><div class="l">Compassion · dignity</div></div>
+        <div class="hero-stat"><div class="v">100<small>%</small></div><div class="l">Quality of life</div></div>
+        <div class="hero-stat"><div class="v">100<small>%</small></div><div class="l">Health · wellbeing</div></div>
+        <div class="hero-stat"><div class="v">21</div><div class="l">Languages in chat</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════ BODY ═══════════ -->
+  <div class="body">
+
+    <!-- Intro -->
+    <p class="intro">
+      Tail-Ed Care is built by <b>Hierarchy Technologies</b>, the software arm of <b>Hierarchy Support Services (HSS UK)</b> — a leading Scottish care provider scoring 100% across all Care Inspectorate quality themes. <b>Real care. Real workflows. Engineered into a platform.</b>
+    </p>
+
+    <!-- Audience row 1: CARE WORKERS -->
+    <div class="audience-row">
+      <div class="audience-label care">For care workers<small>The frontline view</small></div>
+      <div class="features-grid">
+        <div class="feature-card care">
+          <div class="icon">💊</div>
+          <div class="text">
+            <h3>Medication Records (eMAR)</h3>
+            <p>Six-status MAR with refusal capture, alerts &amp; CQC-aligned audit trail.</p>
+          </div>
+        </div>
+        <div class="feature-card care">
+          <div class="icon">📋</div>
+          <div class="text">
+            <h3>Service User Records</h3>
+            <p>17-tab care record, person-centred plans, risk assessments, All-About-Me.</p>
+          </div>
+        </div>
+        <div class="feature-card care">
+          <div class="icon">📅</div>
+          <div class="text">
+            <h3>Rota &amp; Shift Mgmt</h3>
+            <p>GPS-verified clock-in/out, swap &amp; cover requests, RotaCloud sync.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Audience row 2: MANAGERS & ON-CALL -->
+    <div class="audience-row">
+      <div class="audience-label mgr">For managers<small>Operational nerve centre</small></div>
+      <div class="features-grid">
+        <div class="feature-card mgr">
+          <div class="icon">⚡</div>
+          <div class="text">
+            <h3>Smart Manager</h3>
+            <p>Rules-based findings queue. 20+ rule types. Click-through to source records.</p>
+          </div>
+        </div>
+        <div class="feature-card mgr">
+          <div class="icon">⚠️</div>
+          <div class="text">
+            <h3>Incidents · Accidents · Damages</h3>
+            <p>Three CQC-aligned record types with structured workflows &amp; ABC charts.</p>
+          </div>
+        </div>
+        <div class="feature-card mgr">
+          <div class="icon">🔄</div>
+          <div class="text">
+            <h3>Handover &amp; Audit</h3>
+            <p>AI-drafted handover. Audit-ready every minute. One-click CQC-aligned PDF.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Audience row 3: ADMIN & DIRECTORS -->
+    <div class="audience-row">
+      <div class="audience-label admin">For admin · directors<small>Governance &amp; intelligence</small></div>
+      <div class="features-grid">
+        <div class="feature-card admin">
+          <div class="icon">🎓</div>
+          <div class="text">
+            <h3>Training &amp; Certifications</h3>
+            <p>Catalogue · completion tracking · expiry alerts at T-30. Never lapse compliance.</p>
+          </div>
+        </div>
+        <div class="feature-card admin">
+          <div class="icon">📈</div>
+          <div class="text">
+            <h3>Performance Tracker</h3>
+            <p>Per-staff KPIs · trend analysis · supervisions · spot checks · service-user reviews.</p>
+          </div>
+        </div>
+        <div class="feature-card admin">
+          <div class="icon">💷</div>
+          <div class="text">
+            <h3>Finance Anomalies (AI)</h3>
+            <p>AI-detected invoice patterns &amp; variance flags. HR &amp; knowledge-management built in.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TAi block -->
+    <div class="tai">
+      <div class="tai-head">
+        <div class="tai-mark">
+          <svg viewBox="0 0 36 28" fill="none">
+            <path d="M18 2 L19.5 8.5 L26 10 L19.5 11.5 L18 18 L16.5 11.5 L10 10 L16.5 8.5 Z" fill="white"/>
+            <path d="M28 2 L28.8 4.8 L31.5 5.5 L28.8 6.2 L28 9 L27.2 6.2 L24.5 5.5 L27.2 4.8 Z" fill="white" opacity="0.75"/>
+          </svg>
+        </div>
+        <div>
+          <div class="tai-title">TAi</div>
+          <div class="tai-sub">AI built into every part of the live care record</div>
+        </div>
+        <div class="tai-spacer"></div>
+        <span class="tai-badge">In the record</span>
+      </div>
+      <div class="tai-grid">
+        <div class="tai-chip"><span class="dot"></span><div class="text">Voice-to-form<small>Hands-free logging</small></div></div>
+        <div class="tai-chip"><span class="dot"></span><div class="text">21 languages<small>Auto-detected chat</small></div></div>
+        <div class="tai-chip"><span class="dot"></span><div class="text">Smart Notes<small>AI-assisted shift notes</small></div></div>
+        <div class="tai-chip"><span class="dot"></span><div class="text">Crisis detection<small>Pattern alerts</small></div></div>
+        <div class="tai-chip"><span class="dot"></span><div class="text">Handover drafts<small>End-of-shift in seconds</small></div></div>
+        <div class="tai-chip"><span class="dot"></span><div class="text">Streaming replies<small>Token-by-token</small></div></div>
+        <div class="tai-chip"><span class="dot"></span><div class="text">Permission-aware<small>Sees only what you can</small></div></div>
+        <div class="tai-chip"><span class="dot"></span><div class="text">PII-safe<small>No PHI in logs</small></div></div>
+      </div>
+    </div>
+
+    <!-- Bottom row: UK + Compare -->
+    <div class="bottom-row">
+      <div class="uk-card">
+        <div class="uk-card-head">
+          <div class="uk-flag">🇬🇧</div>
+          <div>
+            <h4>Your data stays in the UK</h4>
+            <p>Hosted on Microsoft Azure UK · zero non-UK egress in normal operation.</p>
+          </div>
+        </div>
+        <div class="uk-tags">
+          <span class="uk-tag">Azure UK</span>
+          <span class="uk-tag">GDPR</span>
+          <span class="uk-tag">DPA 2018</span>
+          <span class="uk-tag">Cyber Essentials</span>
+        </div>
+      </div>
+
+      <div class="compare">
+        <div class="compare-head">
+          <h4>Built different.</h4>
+          <div class="col-h typ">Typical platform</div>
+          <div class="col-h tec">Tail-Ed Care</div>
+        </div>
+        <div class="compare-row">
+          <span class="feat">Audit-readiness</span>
+          <span class="typ">Year-end assembly</span>
+          <span class="tec"><span class="check">✓</span>Every minute</span>
+        </div>
+        <div class="compare-row">
+          <span class="feat">AI assistance</span>
+          <span class="typ">Bolted-on chatbot</span>
+          <span class="tec"><span class="check">✓</span>In the live record</span>
+        </div>
+        <div class="compare-row">
+          <span class="feat">Mobile in low signal</span>
+          <span class="typ">Limited / breaks</span>
+          <span class="tec"><span class="check">✓</span>Offline + GPS</span>
+        </div>
+        <div class="compare-row">
+          <span class="feat">Chat translation</span>
+          <span class="typ">English only</span>
+          <span class="tec"><span class="check">✓</span>21 languages</span>
+        </div>
+        <div class="compare-row">
+          <span class="feat">Built by</span>
+          <span class="typ">Software vendor</span>
+          <span class="tec"><span class="check">✓</span>A real care provider</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ═══════════ FOOTER (dark) ═══════════ -->
+  <div class="footer">
+    <div class="footer-contact">
+      <div class="top">Tail-Ed Care <span class="by">· by Hierarchy Technologies</span></div>
+      tailoredsupportapp.com &nbsp;·&nbsp; enquiries@hss-uk.org.uk<br><span style="display:inline-block; margin-top:2px;">Phone &nbsp;01506&nbsp;238&nbsp;240 &nbsp;·&nbsp; WhatsApp &nbsp;+44&nbsp;7462&nbsp;939063</span>
+      <div class="meta">Suite 17, 5 Fleming Road, Livingston EH54 7BN · Hierarchy Support Services (SC596209)</div>
+    </div>
+    <div class="platform-block">
+      <span class="label">Available on</span>
+      <div class="platform-row">
+        <div class="platform-badge">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="#3DDC84"><path d="M17.523 15.34A5 5 0 0 0 17 13V8A5 5 0 0 0 7 8v5a5 5 0 0 0-.523 2.34L4 17h16l-2.477-1.66zM12 23a2 2 0 0 0 2-2h-4a2 2 0 0 0 2 2zm-1-17h2v1h-2zm-5.5.5 1.06-1.06 1 1L6.5 7.5zM16.44 6.44l1.06 1.06-1.06 1.06-1.06-1.06z"/></svg>
+          Android
+        </div>
+        <div class="platform-badge">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="white"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+          iOS
+        </div>
+        <div class="platform-badge">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+          Web
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+<script>document.fonts.ready.then(function() { setTimeout(function() { window.print(); }, 600); });</script>
+</body>
+</html>
