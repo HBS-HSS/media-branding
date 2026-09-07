@@ -1,0 +1,7 @@
+# Finder writes these into every directory it displays, including the asset folders.
+# Commit e3f6415 removed the ones that had been tracked; this stops them coming back.
+.DS_Store
+**/.DS_Store
+
+# Windows equivalent, for anyone opening the assets there.
+Thumbs.db
